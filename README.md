@@ -33,7 +33,7 @@
     </tr>
 </table>
 
-# Code Conventions
+# 🌽 Code Conventions
 
 코드 컨벤션은 모두 소문자로 이루어집니다.
 
