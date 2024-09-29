@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import MenuCard from '../components/MenuCard'
+import Header from '../components/Header'
 
 const Container = styled.div`
   display: flex;
@@ -8,17 +9,25 @@ const Container = styled.div`
   height: 100vh;
 `
 
-const Row = styled.div``
+const Row = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
 
 const Home = () => {
   return (
-    <Container>
-      <Row>
-        <MenuCard></MenuCard>
-        <MenuCard></MenuCard>
-        <MenuCard></MenuCard>
-      </Row>
-    </Container>
+    <>
+      <Header></Header>
+      <Container>
+        <Row>
+          <MenuCard title="아침"></MenuCard>
+          <MenuCard title="점심"></MenuCard>
+          <MenuCard title="저녁"></MenuCard>
+        </Row>
+      </Container>
+    </>
   )
 }
 
