@@ -6,17 +6,16 @@ function Header() {
     margin-left: 30px;
     color: #222;
   `
+  const headerContainerStyle = css`
+    height: 120px;
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `
   return (
     <>
-      <header
-        className={css`
-          height: 120px;
-          padding: 0px 40px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        `}
-      >
+      <header className={headerContainerStyle}>
         <div
           className={css`
             display: flex;
