@@ -1,4 +1,4 @@
-import BestReviewCarousel from '../components/BestReviewCarousel'
+import Card from '../components/BestReviewCard'
 import styled from '@emotion/styled'
 import ReviewInput from '../components/ReviewInput'
 
@@ -7,6 +7,33 @@ function CommentPage() {
     padding: 10px 80px;
     padding-bottom: 100px;
   `
+  function BestReviewCarousel() {
+    const CarouselContainer = styled.div`
+      overflow-x: scroll;
+      overflow-y: hidden;
+      display: flex;
+      margin-bottom: 80px;
+      padding: 20px 0px;
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    `
+    return (
+      <>
+        <h1>베스트 후기</h1>
+        <CarouselContainer>
+          {Array.from({ length: 4 }).map((_, i) => (
+            <Card
+              score={i + 1}
+              restaurant="경기드림타워"
+              comment="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+              key={i}
+            />
+          ))}
+        </CarouselContainer>
+      </>
+    )
+  }
   const Divider = styled.hr`
     border: 0.8px solid #e0e0e0;
     margin-top: 0.75rem;
@@ -41,17 +68,17 @@ function CommentPage() {
     const Review = ({
       score,
       name,
-      content,
+      comment,
     }: {
       score: number
       name: string
-      content: string
+      comment: string
     }) => (
       <>
         <ReviewContainer>
           <ReviewDate>2024-09-09</ReviewDate>
           <ReviewWriter>{name}**</ReviewWriter>
-          <ReviewContent>{content}</ReviewContent>
+          <ReviewContent>{comment}</ReviewContent>
           <ReviewStar>{'★'.repeat(score + 1)}</ReviewStar>
         </ReviewContainer>
         <Divider />
@@ -60,7 +87,12 @@ function CommentPage() {
     return (
       <>
         {Array.from({ length: 4 }).map((_, i) => (
-          <Review score={i} name="한" content="안녕" key={i} />
+          <Review
+            score={i}
+            name="한"
+            comment="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+            key={i}
+          />
         ))}
       </>
     )
