@@ -10,11 +10,18 @@ import {
 
 const Content = styled.div``
 
-const TodayTitle = styled.div`
+const TodayTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin: 0;
   width: 100vw;
+`
+
+const TodayTitleWrapper = styled.div`
+  width: 1148px;
+  display: flex;
+  flex-direction: row;
 `
 
 const Logo = styled.img``
@@ -96,13 +103,15 @@ const Home = () => {
     <>
       <Header></Header>
       <Content>
-        <TodayTitle>
-          <Logo src={rice}></Logo>
-          <TitleWrapper>
-            <Title>오늘의 드림타워 식단</Title>
-            <Subtitle>2024년 08월 24일 수요일</Subtitle>
-          </TitleWrapper>
-        </TodayTitle>
+        <TodayTitleContainer>
+          <TodayTitleWrapper>
+            <Logo src={rice}></Logo>
+            <TitleWrapper>
+              <Title>오늘의 드림타워 식단</Title>
+              <Subtitle>2024년 08월 24일 수요일</Subtitle>
+            </TitleWrapper>
+          </TodayTitleWrapper>
+        </TodayTitleContainer>
         <MenuWrapper>
           <MenuCardWarpper>
             <MenuCard title="아침"></MenuCard>
