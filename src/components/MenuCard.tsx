@@ -14,6 +14,20 @@ const Card = styled.div`
   border-radius: 20px;
   background: white;
   box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 0.09);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 4px 16px 50px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(5px);
+    box-shadow: 2px 8px 20px 4px rgba(0, 0, 0, 0.1);
+  }
 `
 
 const Title = styled.p`
