@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import MenuCard from '../components/MenuCard'
 import Header from '../components/Header'
 import rice from '../assets/rice.svg'
+import kiryong from '../assets/kiryong_notice.svg'
 import {
   HiOutlineArrowRightCircle,
   HiOutlineArrowLeftCircle,
@@ -76,7 +77,20 @@ const Button = styled.div`
   padding: 0;
   cursor: pointer;
 `
-
+const FloatingCircle = styled.div`
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 0.09);
+`
 const Home = () => {
   return (
     <>
@@ -108,6 +122,9 @@ const Home = () => {
             </ButtonWrapper>
           </ButtonContainer>
         </MenuWrapper>
+        <FloatingCircle>
+          <Logo src={kiryong}></Logo>
+        </FloatingCircle>
       </Content>
     </>
   )
