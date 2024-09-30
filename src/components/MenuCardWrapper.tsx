@@ -22,6 +22,10 @@ const MenuCardWarpper = styled.div`
   justify-content: center;
   margin-top: 48px;
   margin-bottom: 28px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `
 
 const ButtonContainer = styled.div`
