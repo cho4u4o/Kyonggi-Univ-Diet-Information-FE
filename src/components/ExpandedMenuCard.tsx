@@ -30,6 +30,16 @@ const Card = styled.div`
   border-radius: 20px;
   background: white;
   box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 0.09);
+
+  @media (max-width: 1200px) {
+    width: 84vw;
+    height: 84vh;
+  }
+
+  @media (max-width: 480px) {
+    width: 94vw;
+    height: 80vh;
+  }
 `
 
 const Title = styled.p`
@@ -41,6 +51,20 @@ const Title = styled.p`
   left: 0;
   margin-top: 40px;
   margin-left: 40px;
+
+  span {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 4px;
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 68px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 40px;
+  }
 `
 
 const ReviewContainer = styled.div`
@@ -54,6 +78,20 @@ const ReviewContainer = styled.div`
   background: #f4f4f4;
   right: 40px;
   bottom: 40px;
+
+  @media (max-width: 1280px) {
+    width: 498px;
+    height: 780px;
+  }
+
+  @media (max-width: 480px) {
+    width: 80vw;
+    height: 28vh;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    bottom: 20px;
+  }
 `
 const ReviewTitle = styled.p`
   font-family: BMHANNAPro;
@@ -68,6 +106,15 @@ const ReviewTitle = styled.p`
     font-weight: 400;
     margin-left: 4px;
   }
+
+  @media (max-width: 480px) {
+    font-size: 28px;
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      margin-left: 4px;
+    }
+  }
 `
 
 const MenuContainer = styled.div`
@@ -76,19 +123,41 @@ const MenuContainer = styled.div`
   height: 500px;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
   left: 40px;
   bottom: 40px;
+
+  @media (max-width: 1280px) {
+    width: 400px;
+    height: 400px;
+  }
+
+  @media (max-width: 480px) {
+    width: 248px;
+    height: 248px;
+    left: 40px;
+    top: 140px;
+  }
 `
 
 const Menu = styled.p<{ isActive?: boolean }>`
   font-family: Pretendard;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
   color: ${(props) => (props.isActive ? '#00AAA9' : '#000000')};
   cursor: pointer;
+
+  @media (max-width: 1280px) {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `
 
 const MenuWrapper = styled.div`
@@ -103,11 +172,12 @@ const Stepper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 `
 
 const Step = styled.div<{ isActive?: boolean }>`
-  width: 3px;
-  height: 70px;
+  width: 4px;
+  height: 68px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,6 +187,14 @@ const Step = styled.div<{ isActive?: boolean }>`
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  @media (max-width: 1280px) {
+    height: 48px;
+  }
+
+  @media (max-width: 480px) {
+    height: 36px;
+  }
 `
 
 //dummy data
@@ -135,7 +213,10 @@ const ExpandedMenuCard = forwardRef<HTMLDivElement, Props>(({ title }, ref) => {
   return (
     <ExpandedCardContainer>
       <Card ref={ref}>
-        <Title>{title}</Title>{' '}
+        <Title>
+          <span>오늘의</span>
+          {title}
+        </Title>{' '}
         <ReviewContainer>
           <ReviewTitle>
             {menuItems[activeStep]}
