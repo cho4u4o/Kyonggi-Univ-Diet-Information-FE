@@ -9,6 +9,10 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 `
 
 const TodayTitleContainer = styled.div`
@@ -17,6 +21,10 @@ const TodayTitleContainer = styled.div`
   justify-content: flex-start;
   margin: 0;
   width: 1248px;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 
 const Logo = styled.img`
@@ -59,6 +67,10 @@ const FloatingCircle = styled.div`
   justify-content: center;
   cursor: pointer;
   box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 0.09);
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 const Home = () => {
   return (
