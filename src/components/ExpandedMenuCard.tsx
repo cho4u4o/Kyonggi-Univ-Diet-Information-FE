@@ -54,7 +54,7 @@ const Title = styled.p`
   margin-left: 40px;
 
   span {
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 400;
     margin-right: 4px;
   }
