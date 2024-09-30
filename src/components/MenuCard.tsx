@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 interface Props {
   title: string
+  onClick: () => void
 }
 
 const Card = styled.div`
@@ -68,9 +69,9 @@ const menuItems = [
   '요구르트',
 ]
 
-const MenuCard = ({ title }: Props) => {
+const MenuCard = ({ title, onClick }: Props) => {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <Title>{title}</Title>
       <MenuWrapper>
         {menuItems.map((menu, index) => (
