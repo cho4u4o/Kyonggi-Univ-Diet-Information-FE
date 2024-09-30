@@ -25,7 +25,7 @@ const Card = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 80vw;
-  height: 90vh;
+  height: 88vh;
   margin: 0 20px;
   border-radius: 20px;
   background: white;
@@ -37,8 +37,9 @@ const Card = styled.div`
   }
 
   @media (max-width: 480px) {
-    width: 94vw;
-    height: 80vh;
+    width: 88vw;
+    height: 88vh;
+    overflow: scroll;
   }
 `
 
@@ -63,7 +64,9 @@ const Title = styled.p`
   }
 
   @media (max-width: 480px) {
+    position: static;
     font-size: 40px;
+    margin-left: 20px;
   }
 `
 
@@ -81,16 +84,14 @@ const ReviewContainer = styled.div`
 
   @media (max-width: 1280px) {
     width: 498px;
-    height: 780px;
+    height: 600px;
   }
 
   @media (max-width: 480px) {
+    position: static;
     width: 80vw;
-    height: 28vh;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    bottom: 20px;
+    height: 68vh;
+    margin: 20px auto;
   }
 `
 const ReviewTitle = styled.p`
@@ -133,10 +134,10 @@ const MenuContainer = styled.div`
   }
 
   @media (max-width: 480px) {
+    position: static;
     width: 248px;
     height: 248px;
-    left: 40px;
-    top: 140px;
+    margin: 0 20px;
   }
 `
 
@@ -217,12 +218,6 @@ const ExpandedMenuCard = forwardRef<HTMLDivElement, Props>(({ title }, ref) => {
           <span>오늘의</span>
           {title}
         </Title>{' '}
-        <ReviewContainer>
-          <ReviewTitle>
-            {menuItems[activeStep]}
-            <span>은 어떨까?</span>
-          </ReviewTitle>
-        </ReviewContainer>
         <MenuContainer>
           <Stepper>
             {menuItems.map((_, index) => (
@@ -244,7 +239,13 @@ const ExpandedMenuCard = forwardRef<HTMLDivElement, Props>(({ title }, ref) => {
               </Menu>
             ))}
           </MenuWrapper>
-        </MenuContainer>
+        </MenuContainer>{' '}
+        <ReviewContainer>
+          <ReviewTitle>
+            {menuItems[activeStep]}
+            <span>은 어떨까?</span>
+          </ReviewTitle>
+        </ReviewContainer>
       </Card>
     </ExpandedCardContainer>
   )
