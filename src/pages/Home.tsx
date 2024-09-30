@@ -8,23 +8,24 @@ import {
   HiOutlineArrowLeftCircle,
 } from 'react-icons/hi2'
 
-const Content = styled.div``
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 const TodayTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0;
-  width: 100vw;
+  width: 1248px;
 `
 
-const TodayTitleWrapper = styled.div`
-  width: 1148px;
-  display: flex;
-  flex-direction: row;
+const Logo = styled.img`
+  margin: 0;
 `
-
-const Logo = styled.img``
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ const Subtitle = styled.p`
 `
 
 const MenuWrapper = styled.div`
-  width: 100vw;
+  width: 1148px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +59,6 @@ const MenuWrapper = styled.div`
 `
 
 const MenuCardWarpper = styled.div`
-  width: 1148px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -67,13 +67,9 @@ const MenuCardWarpper = styled.div`
 `
 
 const ButtonContainer = styled.div`
-  width: 1148px;
-`
-
-const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin: 0 20px;
+  width: 1188px;
 `
 
 const Button = styled.div`
@@ -104,13 +100,11 @@ const Home = () => {
       <Header></Header>
       <Content>
         <TodayTitleContainer>
-          <TodayTitleWrapper>
-            <Logo src={rice}></Logo>
-            <TitleWrapper>
-              <Title>오늘의 드림타워 식단</Title>
-              <Subtitle>2024년 08월 24일 수요일</Subtitle>
-            </TitleWrapper>
-          </TodayTitleWrapper>
+          <Logo src={rice}></Logo>
+          <TitleWrapper>
+            <Title>오늘의 드림타워 식단</Title>
+            <Subtitle>2024년 08월 24일 수요일</Subtitle>
+          </TitleWrapper>
         </TodayTitleContainer>
         <MenuWrapper>
           <MenuCardWarpper>
@@ -119,16 +113,12 @@ const Home = () => {
             <MenuCard title="저녁"></MenuCard>
           </MenuCardWarpper>
           <ButtonContainer>
-            <ButtonWrapper>
-              <Button>
-                <HiOutlineArrowLeftCircle size={48}></HiOutlineArrowLeftCircle>
-              </Button>
-              <Button>
-                <HiOutlineArrowRightCircle
-                  size={48}
-                ></HiOutlineArrowRightCircle>
-              </Button>
-            </ButtonWrapper>
+            <Button>
+              <HiOutlineArrowLeftCircle size={48}></HiOutlineArrowLeftCircle>
+            </Button>
+            <Button>
+              <HiOutlineArrowRightCircle size={48}></HiOutlineArrowRightCircle>
+            </Button>
           </ButtonContainer>
         </MenuWrapper>
         <FloatingCircle>
