@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 interface Props {
   title: string
+  onClick: () => void
 }
 
 const Card = styled.div`
@@ -27,6 +28,12 @@ const Card = styled.div`
   &:active {
     transform: translateY(5px);
     box-shadow: 2px 8px 20px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 480px) {
+    width: 80vw;
+    height: 400px;
+    margin: 20px 0;
   }
 `
 
@@ -68,9 +75,9 @@ const menuItems = [
   '요구르트',
 ]
 
-const MenuCard = ({ title }: Props) => {
+const MenuCard = ({ title, onClick }: Props) => {
   return (
-    <Card>
+    <Card onClick={onClick}>
       <Title>{title}</Title>
       <MenuWrapper>
         {menuItems.map((menu, index) => (
