@@ -1,4 +1,5 @@
 import { css } from '@emotion/css'
+import { NavLink } from 'react-router-dom'
 
 function Header() {
   const listStyle = css`
@@ -50,9 +51,7 @@ function Header() {
               list-style: none;
             `}
           >
-            <li className={listStyle}>
-              <a href="https://www.naver.com">식단후기</a>
-            </li>
+            <NavLink to="comment">식당후기</NavLink>
             <li className={listStyle}>
               <a>교내식당</a>
             </li>

@@ -75,7 +75,6 @@ const FloatingCircle = styled.div`
 const Home = () => {
   return (
     <>
-      <Header></Header>
       <Content>
         <TodayTitleContainer>
           <Logo src={rice}></Logo>
