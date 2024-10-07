@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import Header from '../components/Header'
 import rice from '../assets/rice.svg'
 import kiryong from '../assets/kiryong-notice.svg'
 import MenuCardWrapper from '../components/MenuCardWrapper'
@@ -75,7 +74,6 @@ const FloatingCircle = styled.div`
 const Home = () => {
   return (
     <>
-      <Header></Header>
       <Content>
         <TodayTitleContainer>
           <Logo src={rice}></Logo>
