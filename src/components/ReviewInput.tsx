@@ -13,7 +13,8 @@ function ReviewInput() {
   const Textarea = styled.textarea`
     grid-column: 1;
     grid-row: 1;
-    font-size: 12px;
+    font-size: 15px;
+    font-family: 'Pretendard';
     width: 100%;
     height: 100%;
     padding: 15px;
