@@ -20,9 +20,13 @@ const reviews = Array.from({ length: 7 }).map((_, i) => ({
 const CarouselContainer = styled.div`
   width: 100%;
   margin: auto;
+  margin-bottom: 20px;
   --slide-height: 19rem;
   --slide-spacing: 2rem;
   --slide-size: 380px;
+  @media (max-width: 480px) {
+    --slide-size: 260px;
+  }
 `
 
 const CarouselWrapper = styled.div`
@@ -132,7 +136,6 @@ const Carousel: React.FC<PropType> = (props) => {
 
   return (
     <>
-      <h1>베스트 후기</h1>
       <CarouselContainer>
         <CarouselWrapper ref={emblaRef}>
           <CarouselItemWrapper>

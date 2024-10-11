@@ -52,7 +52,6 @@ function ReviewInput() {
 
   return (
     <>
-      <h1>전체 후기</h1>
       <ReviewOption />
       <Input />
     </>

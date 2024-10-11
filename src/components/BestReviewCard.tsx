@@ -13,9 +13,18 @@ function BestReviewCard({
     background: linear-gradient(#f4f4f4, rgba(212, 241, 241, 0.4));
     padding: 30px;
     border-radius: 40px;
-    min-width: 320px;
+    width: 320px;
     height: 180px;
     margin: 0px 20px 0px 0px;
+    @media (max-width: 480px) {
+      padding: 20px;
+
+      width: 220px;
+      height: 120px;
+      border-radius: 30px;
+      overflow: hidden;
+      align-items: center;
+    }
   `
   const Column = styled.div`
     flex-direction: column;
@@ -26,6 +35,9 @@ function BestReviewCard({
     flex-direction: row;
     justify-content: space-between;
     display: flex;
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
   `
   const Restaurant = ({ restaurant }: { restaurant: string }) => (
     <a>
@@ -43,6 +55,10 @@ function BestReviewCard({
     align-items: center;
     font-size: 18px;
     line-height: 1.5;
+    @media (max-width: 480px) {
+      margin: 0;
+      font-size: 13px;
+    }
   `
   const ReviewInformation = () => (
     <>

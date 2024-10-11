@@ -81,10 +81,18 @@ function ReviewView() {
   )
 }
 
+const H1 = styled.h1`
+  @media (max-width: 480px) {
+    font-size: 25px;
+  }
+`
+
 function CommentPage() {
   return (
     <Body>
+      <H1>베스트 후기</H1>
       <Carousel slides={SLIDES} options={OPTIONS} />
+      <H1>전체 후기</H1>
       <ReviewInput />
       <p>
         리뷰 <b>4</b>개 | 최신순
