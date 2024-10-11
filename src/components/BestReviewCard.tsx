@@ -13,9 +13,9 @@ function BestReviewCard({
     background: linear-gradient(#f4f4f4, rgba(212, 241, 241, 0.4));
     padding: 30px;
     border-radius: 40px;
-    margin-right: 20px;
-    min-width: 350px;
+    min-width: 320px;
     height: 180px;
+    margin: 0px 20px 0px 0px;
   `
   const Column = styled.div`
     flex-direction: column;

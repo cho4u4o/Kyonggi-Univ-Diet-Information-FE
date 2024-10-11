@@ -3,17 +3,23 @@ import { NavLink } from 'react-router-dom'
 
 function Header() {
   const Header = styled.header`
-    height: 80px;
+    height: 100px;
     padding: 0px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 480px) {
+      height: 70px;
+    }
   `
   const Logo = styled(NavLink)`
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
     color: #222;
+    @media (max-width: 480px) {
+      font-size: 25px;
+    }
   `
   const SmallLogo = styled.span`
     margin-left: 10px;
@@ -30,7 +36,7 @@ function Header() {
   const StyledNavLink = styled(NavLink)`
     color: black;
     text-decoration: none;
-    margin-left: 10px;
+    margin-left: 15px;
 
     &.active {
       color: #00abaa;
@@ -38,6 +44,10 @@ function Header() {
 
     &:hover {
       color: #00abaa;
+    }
+
+    @media (max-width: 480px) {
+      margin-left: 10px;
     }
   `
   return (
