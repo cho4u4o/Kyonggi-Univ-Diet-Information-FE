@@ -131,28 +131,37 @@ const Carousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onNavButtonClick)
 
   return (
-    <CarouselContainer>
-      <CarouselWrapper ref={emblaRef}>
-        <CarouselItemWrapper>
-          {slides.map((index) => (
-            <CarouselItem key={index}>
-              <Card
-                score={reviews[index]?.score}
-                restaurant={reviews[index]?.restaurant}
-                comment={reviews[index]?.comment}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselItemWrapper>
-      </CarouselWrapper>
-      <CarouselControls>
-        <CarouselButtons>
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <CarouselIndicator slides={slides} emblaApi={emblaApi} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </CarouselButtons>
-      </CarouselControls>
-    </CarouselContainer>
+    <>
+      <h1>베스트 후기</h1>
+      <CarouselContainer>
+        <CarouselWrapper ref={emblaRef}>
+          <CarouselItemWrapper>
+            {slides.map((index) => (
+              <CarouselItem key={index}>
+                <Card
+                  score={reviews[index]?.score}
+                  restaurant={reviews[index]?.restaurant}
+                  comment={reviews[index]?.comment}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselItemWrapper>
+        </CarouselWrapper>
+        <CarouselControls>
+          <CarouselButtons>
+            <PrevButton
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+            />
+            <CarouselIndicator slides={slides} emblaApi={emblaApi} />
+            <NextButton
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+            />
+          </CarouselButtons>
+        </CarouselControls>
+      </CarouselContainer>
+    </>
   )
 }
 
