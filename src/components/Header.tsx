@@ -1,66 +1,69 @@
-import { css } from '@emotion/css'
+import styled from '@emotion/styled'
 import { NavLink } from 'react-router-dom'
 
 function Header() {
-  const listStyle = css`
-    padding: 0;
-    margin-left: 30px;
-    color: #222;
-  `
-  const headerContainerStyle = css`
-    height: 120px;
+  const Header = styled.header`
+    height: 100px;
     padding: 0px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 480px) {
+      height: 70px;
+    }
+  `
+  const Logo = styled(NavLink)`
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #222;
+    @media (max-width: 480px) {
+      font-size: 25px;
+    }
+  `
+  const SmallLogo = styled.span`
+    margin-left: 10px;
+    @media (max-width: 480px) {
+      display: none;
+    }
+  `
+  const MenuBar = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+  `
+  const StyledNavLink = styled(NavLink)`
+    color: black;
+    text-decoration: none;
+    margin-left: 15px;
+
+    &.active {
+      color: #00abaa;
+    }
+
+    &:hover {
+      color: #00abaa;
+    }
+
+    @media (max-width: 480px) {
+      margin-left: 10px;
+    }
   `
   return (
     <>
-      <header className={headerContainerStyle}>
-        <div
-          className={css`
-            display: flex;
-            align-items: flex-end;
-          `}
-        >
-          <b
-            className={css`
-              font-size: 40px;
-              margin: 0;
-            `}
-          >
-            기밥
-          </b>
-          <span
-            className={css`
-              font-size: 20px;
-              margin: 5px 10px;
-            `}
-          >
-            {' '}
-            기룡아 밥먹자
-          </span>
+      <Header>
+        <div>
+          <Logo to="/">기밥</Logo>
+          <SmallLogo>기룡아 밥먹자</SmallLogo>
         </div>
-        <div className="menu-bar">
-          <ul
-            className={css`
-              display: flex;
-              flex-wrap: wrap;
-              padding: 0;
-              margin: 0;
-              list-style: none;
-            `}
-          >
-            <NavLink to="comment">식당후기</NavLink>
-            <li className={listStyle}>
-              <a>교내식당</a>
-            </li>
-            <li className={listStyle}>
-              <a>개발자들</a>
-            </li>
-          </ul>
-        </div>
-      </header>
+
+        <MenuBar>
+          <StyledNavLink to="comment">식당후기</StyledNavLink>
+          <StyledNavLink to="abc">교내식당</StyledNavLink>
+          <StyledNavLink to="abc">개발자들</StyledNavLink>
+        </MenuBar>
+      </Header>
     </>
   )
 }
