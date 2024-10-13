@@ -85,7 +85,7 @@ interface ReviewItemProps {
 const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
   const ReviewContainer = styled.div`
     height: 60px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -93,7 +93,7 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
   `
   const ReviewDate = styled.span`
     font-family: 'Pretendard';
-    font-size: 13px;
+    font-size: 10px;
     grid-column: 1;
     grid-row: 2;
   `
@@ -118,7 +118,7 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
   return (
     <>
       <ReviewContainer>
-        <ReviewDate>2024-09-09</ReviewDate>
+        <ReviewDate>2024.09.09</ReviewDate>
         <ReviewWriter>정**</ReviewWriter>
         <ReviewContent>{comment}</ReviewContent>
         <ReviewStar>{'★'.repeat(rating)}</ReviewStar>
