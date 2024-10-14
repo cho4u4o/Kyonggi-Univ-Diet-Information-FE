@@ -144,7 +144,7 @@ const ReviewPagination: React.FC = () => {
           </PaginationButton>
         ))}
         {totalPages > pagesPerGroup &&
-          currentGroupPages.length > pagesPerGroup && (
+          currentGroupPages.length >= pagesPerGroup && (
             <PaginationButton onClick={() => handleGroupChange('next')}>
               다음
             </PaginationButton>
