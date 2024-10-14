@@ -1,76 +1,8 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
+import reviewsData from '../datas/reviews.json'
 
-const Datas = [
-  {
-    id: 1,
-    rating: 5,
-    content: 'Amazing food and great service. Will definitely come back!',
-  },
-  {
-    id: 2,
-    rating: 4,
-    content:
-      'The ambiance was perfect, and the food was delicious, but a bit pricey.',
-  },
-  {
-    id: 3,
-    rating: 3,
-    content:
-      'Decent meal, but nothing extraordinary. The service was a bit slow.',
-  },
-  {
-    id: 4,
-    rating: 5,
-    content:
-      'Best restaurant in town! The dishes were flavorful, and the staff was friendly.',
-  },
-  {
-    id: 5,
-    rating: 2,
-    content:
-      'The food was cold, and the portion sizes were small. Not worth the price.',
-  },
-  {
-    id: 6,
-    rating: 4,
-    content: 'Great location and nice food. The dessert was especially good.',
-  },
-  {
-    id: 7,
-    rating: 3,
-    content: 'The experience was okay, but there are better options nearby.',
-  },
-  {
-    id: 8,
-    rating: 5,
-    content:
-      'Incredible experience! Every dish was well-prepared and tasted fantastic.',
-  },
-  {
-    id: 9,
-    rating: 1,
-    content:
-      'Terrible experience. The food was undercooked, and the service was rude.',
-  },
-  {
-    id: 10,
-    rating: 4,
-    content:
-      'Nice variety on the menu and reasonable prices. Will visit again soon.',
-  },
-  {
-    id: 11,
-    rating: 2,
-    content: 'The restaurant was overcrowded, and the wait time was too long.',
-  },
-  {
-    id: 12,
-    rating: 5,
-    content:
-      'Absolutely loved it! The flavors were spot on, and the service was top-notch.',
-  },
-]
+const Datas = reviewsData.Datas
 
 const Divider = styled.hr`
   border: 0.8px solid #e0e0e0;
