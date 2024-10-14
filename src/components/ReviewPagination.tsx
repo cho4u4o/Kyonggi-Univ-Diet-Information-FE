@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import reviewsData from '../datas/reviews.json'
+import { FaCaretLeft, FaCaretRight } from 'react-icons/fa'
 
 const Datas = reviewsData.Datas
 
@@ -61,7 +62,7 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
 }
 
 const itemsPerPage = 5
-const pagesPerGroup = 10
+const pagesPerGroup = 5
 
 const ReviewPagination: React.FC = () => {
   // page 관련 페이지네이션
@@ -106,6 +107,7 @@ const ReviewPagination: React.FC = () => {
     background-color: transparent;
     cursor: pointer;
     font-size: 15px;
+    align-items: center;
     &:hover {
       color: #00abaa;
     }
@@ -131,7 +133,7 @@ const ReviewPagination: React.FC = () => {
       <ButtonWrapper>
         {totalPages > pagesPerGroup && currentPage > pagesPerGroup && (
           <PaginationButton onClick={() => handleGroupChange('prev')}>
-            이전
+            <FaCaretLeft size={16} />
           </PaginationButton>
         )}
         {currentGroupPages.map((page) => (
@@ -146,7 +148,7 @@ const ReviewPagination: React.FC = () => {
         {totalPages > pagesPerGroup &&
           currentGroupPages.length >= pagesPerGroup && (
             <PaginationButton onClick={() => handleGroupChange('next')}>
-              다음
+              <FaCaretRight size={16} />
             </PaginationButton>
           )}
       </ButtonWrapper>
