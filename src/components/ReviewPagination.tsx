@@ -61,15 +61,36 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
 }
 
 const itemsPerPage = 5
+const pagesPerGroup = 10
 
 const ReviewPagination: React.FC = () => {
+  // page 관련 페이지네이션
   const [currentPage, setCurrentPage] = useState(1)
   const startIndex = (currentPage - 1) * itemsPerPage
   const currentPageData = Datas.slice(startIndex, startIndex + itemsPerPage)
   const totalPages = Math.ceil(Datas.length / itemsPerPage)
 
+  // page button group 관련 페이지네이션
+  const [currentGroup, setCurrentGroup] = useState(1)
+  const startGroup = (currentGroup - 1) * pagesPerGroup
+  const currentGroupPages = Array.from(
+    { length: totalPages },
+    (_, index) => index + 1,
+  ).slice(startGroup, startGroup + pagesPerGroup)
+  const totalGroup = Math.ceil(totalPages / pagesPerGroup)
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
+  }
+
+  const handleGroupChange = (direction: 'next' | 'prev') => {
+    if (direction === 'next' && currentGroup < totalGroup) {
+      setCurrentGroup(currentGroup + 1)
+      setCurrentPage(currentGroup * pagesPerGroup + 1)
+    } else if (direction === 'prev' && currentGroup > 1) {
+      setCurrentGroup(currentGroup - 1)
+      setCurrentPage((currentGroup - 2) * pagesPerGroup + 1)
+    }
   }
 
   const ButtonWrapper = styled.div`
@@ -78,7 +99,7 @@ const ReviewPagination: React.FC = () => {
     padding: 0.75rem 1.5rem;
   `
 
-  const PaginationButton = styled.button<{ isActive: boolean }>`
+  const PaginationButton = styled.button<{ isActive?: boolean }>`
     padding: 0.75rem;
     margin: 0 0.25rem;
     border: none;
@@ -108,15 +129,26 @@ const ReviewPagination: React.FC = () => {
       </div>
 
       <ButtonWrapper>
-        {[...Array(totalPages)].map((_, index) => (
+        {totalPages > pagesPerGroup && currentPage > pagesPerGroup && (
+          <PaginationButton onClick={() => handleGroupChange('prev')}>
+            이전
+          </PaginationButton>
+        )}
+        {currentGroupPages.map((page) => (
           <PaginationButton
-            key={index}
-            isActive={currentPage === index + 1}
-            onClick={() => handlePageChange(index + 1)}
+            key={page}
+            isActive={currentPage === page}
+            onClick={() => handlePageChange(page)}
           >
-            {index + 1}
+            {page}
           </PaginationButton>
         ))}
+        {totalPages > pagesPerGroup &&
+          currentGroupPages.length > pagesPerGroup && (
+            <PaginationButton onClick={() => handleGroupChange('next')}>
+              다음
+            </PaginationButton>
+          )}
       </ButtonWrapper>
     </>
   )
