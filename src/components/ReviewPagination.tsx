@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import reviewsData from '../datas/reviews.json'
 import { FaCaretLeft, FaCaretRight } from 'react-icons/fa'
+import { PAGE_OPTIONS } from '../constants/PaginationSettings'
 
 const Datas = reviewsData.Datas
 
@@ -61,24 +62,24 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
   )
 }
 
-const itemsPerPage = 5
-const pagesPerGroup = 5
-
 const ReviewPagination: React.FC = () => {
   // page 관련 페이지네이션
   const [currentPage, setCurrentPage] = useState(1)
-  const startIndex = (currentPage - 1) * itemsPerPage
-  const currentPageData = Datas.slice(startIndex, startIndex + itemsPerPage)
-  const totalPages = Math.ceil(Datas.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * PAGE_OPTIONS.ITEMS_PER_PAGE
+  const currentPageData = Datas.slice(
+    startIndex,
+    startIndex + PAGE_OPTIONS.ITEMS_PER_PAGE,
+  )
+  const totalPages = Math.ceil(Datas.length / PAGE_OPTIONS.ITEMS_PER_PAGE)
 
   // page button group 관련 페이지네이션
   const [currentGroup, setCurrentGroup] = useState(1)
-  const startGroup = (currentGroup - 1) * pagesPerGroup
+  const startGroup = (currentGroup - 1) * PAGE_OPTIONS.PAGES_PER_GROUP
   const currentGroupPages = Array.from(
     { length: totalPages },
     (_, index) => index + 1,
-  ).slice(startGroup, startGroup + pagesPerGroup)
-  const totalGroup = Math.ceil(totalPages / pagesPerGroup)
+  ).slice(startGroup, startGroup + PAGE_OPTIONS.PAGES_PER_GROUP)
+  const totalGroup = Math.ceil(totalPages / PAGE_OPTIONS.PAGES_PER_GROUP)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -87,10 +88,10 @@ const ReviewPagination: React.FC = () => {
   const handleGroupChange = (direction: 'next' | 'prev') => {
     if (direction === 'next' && currentGroup < totalGroup) {
       setCurrentGroup(currentGroup + 1)
-      setCurrentPage(currentGroup * pagesPerGroup + 1)
+      setCurrentPage(currentGroup * PAGE_OPTIONS.PAGES_PER_GROUP + 1)
     } else if (direction === 'prev' && currentGroup > 1) {
       setCurrentGroup(currentGroup - 1)
-      setCurrentPage((currentGroup - 2) * pagesPerGroup + 1)
+      setCurrentPage((currentGroup - 2) * PAGE_OPTIONS.PAGES_PER_GROUP + 1)
     }
   }
 
@@ -131,11 +132,12 @@ const ReviewPagination: React.FC = () => {
       </div>
 
       <ButtonWrapper>
-        {totalPages > pagesPerGroup && currentPage > pagesPerGroup && (
-          <PaginationButton onClick={() => handleGroupChange('prev')}>
-            <FaCaretLeft size={16} />
-          </PaginationButton>
-        )}
+        {totalPages > PAGE_OPTIONS.PAGES_PER_GROUP &&
+          currentPage > PAGE_OPTIONS.PAGES_PER_GROUP && (
+            <PaginationButton onClick={() => handleGroupChange('prev')}>
+              <FaCaretLeft size={16} />
+            </PaginationButton>
+          )}
         {currentGroupPages.map((page) => (
           <PaginationButton
             key={page}
@@ -145,8 +147,8 @@ const ReviewPagination: React.FC = () => {
             {page}
           </PaginationButton>
         ))}
-        {totalPages > pagesPerGroup &&
-          currentGroupPages.length >= pagesPerGroup && (
+        {totalPages > PAGE_OPTIONS.PAGES_PER_GROUP &&
+          currentGroupPages.length >= PAGE_OPTIONS.PAGES_PER_GROUP && (
             <PaginationButton onClick={() => handleGroupChange('next')}>
               <FaCaretRight size={16} />
             </PaginationButton>
