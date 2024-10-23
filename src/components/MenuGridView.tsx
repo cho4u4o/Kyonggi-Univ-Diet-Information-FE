@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import menuData from '../datas/menus.json'
 
 const MenuContainer = styled.div`
   display: flex;
@@ -14,36 +15,38 @@ const MenuGrid = styled.main`
 `
 
 const MenuItem = styled.div`
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s;
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 10px;
+  transition:
+    transform 0.3s,
+    border 0.2s ease-in-out;
+  height: 200px;
 
   &:hover {
     transform: scale(1.05);
   }
 `
 
-const menus = [
-  '메뉴 1',
-  '메뉴 2',
-  '메뉴 3',
-  '메뉴 4',
-  '메뉴 5',
-  '메뉴 6',
-  '메뉴 7',
-  '메뉴 8',
-  '메뉴 9',
-]
+const MenuImage = styled.div<{ url: string }>`
+  background-image: url(${(props) => props.url});
+  background-size: cover;
+  margin-bottom: 10px;
+  height: 80%;
+  border-radius: 10px;
+`
+
+const menus = menuData.Menus
 
 export default function MenuGridView() {
   return (
     <MenuContainer>
       <MenuGrid>
         {menus.map((menu, index) => (
-          <MenuItem key={index}>{menu}</MenuItem>
+          <MenuItem key={index}>
+            <MenuImage url={menu.url} />
+            {menu.menu}
+          </MenuItem>
         ))}
       </MenuGrid>
     </MenuContainer>
