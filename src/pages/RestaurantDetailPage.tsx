@@ -30,17 +30,17 @@ const RestaurantTime = Styled.span`
 `
 
 const MainDiv = Styled.div`
-  height: 100%;
-  width: 100%;
   background-color: #f5f5f5;
   border-radius: 30px 30px 0 0;
 `
 
 const InnerRestaurant = Styled.div`
   align-items: center;
+  display: flex;
   padding: 32px;
   box-sizing: border-box;
   overflow-x: scroll;
+  overflow-y: hidden;
 `
 
 const InnerRestaurantMenuTitle = Styled.span`
