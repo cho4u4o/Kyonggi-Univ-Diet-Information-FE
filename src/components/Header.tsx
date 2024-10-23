@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 function Header() {
   const Header = styled.header`
+    background-color: transparent;
     height: 100px;
     padding: 0px 40px;
     display: flex;
@@ -36,7 +37,7 @@ function Header() {
   const StyledNavLink = styled(NavLink)`
     color: black;
     text-decoration: none;
-    margin-left: 15px;
+    margin-left: 30px;
 
     &.active {
       color: #00abaa;
@@ -60,7 +61,7 @@ function Header() {
 
         <MenuBar>
           <StyledNavLink to="comment">식당후기</StyledNavLink>
-          <StyledNavLink to="abc">교내식당</StyledNavLink>
+          <StyledNavLink to="restaurant">교내식당</StyledNavLink>
           <StyledNavLink to="abc">개발자들</StyledNavLink>
         </MenuBar>
       </Header>
