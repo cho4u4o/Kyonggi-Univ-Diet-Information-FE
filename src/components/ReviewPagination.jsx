@@ -96,10 +96,7 @@ const ReviewPagination = () => {
     padding: 0.75rem 1.5rem;
   `
 
-  const PaginationButton =
-    styled.button <
-    { isActive } >
-    `
+  const PaginationButton = styled.button`
     padding: 0.75rem;
     margin: 0 0.25rem;
     border: none;

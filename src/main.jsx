@@ -5,6 +5,8 @@ import Home from './pages/Home.jsx'
 import CommentPage from './pages/CommentPage.jsx'
 import AppFrame from './layouts/AppFrame.jsx'
 import RestaurantDetailPage from './pages/RestaurantDetailPage.jsx'
+import RestaurantDetailFrame from './layouts/RestaurantDetailFrame.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,11 +17,12 @@ const router = createBrowserRouter([
       { path: 'comment', element: <CommentPage /> },
       {
         path: 'restaurant',
-        element: <RestaurantDetailPage />,
-        children: [{ index: true, element: <CommentPage /> }],
+        element: <RestaurantDetailFrame />,
+        children: [{ index: true, element: <RestaurantDetailPage /> }],
       },
     ],
   },
+  { path: '*', element: <ErrorPage /> },
 ])
 
 createRoot(document.getElementById('root')).render(
