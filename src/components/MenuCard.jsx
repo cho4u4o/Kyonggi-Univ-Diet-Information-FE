@@ -1,10 +1,5 @@
 import styled from '@emotion/styled'
 
-interface Props {
-  title: string
-  onClick: () => void
-}
-
 const Card = styled.div`
   position: relative;
   justify-content: flex-start;
@@ -48,7 +43,7 @@ const Title = styled.p`
   margin-left: 20px;
 `
 
-const Menu = styled.p<{ isSpecial?: boolean }>`
+const Menu = styled.p`
   font-family: Pretendard;
   font-size: 30px;
   font-weight: 700;
@@ -75,7 +70,7 @@ const menuItems = [
   '요구르트',
 ]
 
-const MenuCard = ({ title, onClick }: Props) => {
+const MenuCard = ({ title, onClick }) => {
   return (
     <Card onClick={onClick}>
       <Title>{title}</Title>

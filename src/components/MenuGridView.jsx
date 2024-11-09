@@ -28,7 +28,7 @@ const MenuItem = styled.div`
   }
 `
 
-const MenuImage = styled.div<{ url: string }>`
+const MenuImage = styled.div`
   background-image: url(${(props) => props.url});
   background-size: cover;
   margin-bottom: 10px;

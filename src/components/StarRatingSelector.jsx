@@ -1,18 +1,11 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
 
-function StarRatingSelector({ totalstars = 5 }: { totalstars: number }) {
+function StarRatingSelector({ totalstars = 5 }) {
   const [selectedStars, setSelectedStars] = React.useState(3)
-  const createArray = (totalStars: number): number[] =>
-    Array.from({ length: totalStars })
+  const createArray = (totalStars) => Array.from({ length: totalStars })
 
-  const Star = ({
-    selected = false,
-    index,
-  }: {
-    selected: boolean
-    index: number
-  }) => (
+  const Star = ({ selected = false, index }) => (
     <>
       <FaStar
         onClick={() => setSelectedStars(index + 1)}

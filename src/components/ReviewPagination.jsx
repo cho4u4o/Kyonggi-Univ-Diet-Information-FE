@@ -11,12 +11,7 @@ const Divider = styled.hr`
   margin-top: 0.75rem;
 `
 
-interface ReviewItemProps {
-  rating: number
-  comment: string
-}
-
-const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
+const ReviewItem = ({ rating, comment }) => {
   const ReviewContainer = styled.div`
     height: 60px;
     padding: 10px 10px;
@@ -62,7 +57,7 @@ const ReviewItem: React.FC<ReviewItemProps> = ({ rating, comment }) => {
   )
 }
 
-const ReviewPagination: React.FC = () => {
+const ReviewPagination = () => {
   // page 관련 페이지네이션
   const [currentPage, setCurrentPage] = useState(1)
   const startIndex = (currentPage - 1) * PAGE_OPTIONS.ITEMS_PER_PAGE
@@ -81,11 +76,11 @@ const ReviewPagination: React.FC = () => {
   ).slice(startGroup, startGroup + PAGE_OPTIONS.PAGES_PER_GROUP)
   const totalGroup = Math.ceil(totalPages / PAGE_OPTIONS.PAGES_PER_GROUP)
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = (page) => {
     setCurrentPage(page)
   }
 
-  const handleGroupChange = (direction: 'next' | 'prev') => {
+  const handleGroupChange = (direction) => {
     if (direction === 'next' && currentGroup < totalGroup) {
       setCurrentGroup(currentGroup + 1)
       setCurrentPage(currentGroup * PAGE_OPTIONS.PAGES_PER_GROUP + 1)
@@ -101,7 +96,10 @@ const ReviewPagination: React.FC = () => {
     padding: 0.75rem 1.5rem;
   `
 
-  const PaginationButton = styled.button<{ isActive?: boolean }>`
+  const PaginationButton =
+    styled.button <
+    { isActive } >
+    `
     padding: 0.75rem;
     margin: 0 0.25rem;
     border: none;
