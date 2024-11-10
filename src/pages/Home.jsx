@@ -1,16 +1,20 @@
 import styled from '@emotion/styled'
 import rice from '../assets/rice.svg'
 import kiryong from '../assets/kiryong-notice.svg'
-import MenuCardWrapper from '../components/MenuCardWrapper'
+import MenuCardSection from '../components/MenuCardSection'
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  margin: 0;
+  background-color: #f4f4f4;
 
   @media (max-width: 480px) {
     flex-direction: column;
+    height: calc(100vh - 70px);
   }
 `
 
@@ -19,15 +23,14 @@ const TodayTitleContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   margin: 0;
-  width: 1248px;
-
-  @media (max-width: 480px) {
-    display: none;
-  }
+  width: 90vw;
 `
 
 const Logo = styled.img`
   margin: 0;
+  @media (max-width: 480px) {
+    width: 150px;
+  }
 `
 
 const TitleWrapper = styled.div`
@@ -35,8 +38,11 @@ const TitleWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 338px;
+  width: 60vw;
   margin: 0;
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 `
 
 const Title = styled.p`
@@ -44,13 +50,16 @@ const Title = styled.p`
   font-size: 40px;
   font-weight: 700;
   margin: 0;
+  @media (max-width: 480px) {
+    font-size: 25px;
+  }
 `
 
 const Subtitle = styled.p`
   font-family: Pretendard;
   font-size: 20px;
-  font-weight: 700;
-  margin: 0;
+  font-weight: 600;
+  margin-top: 4px;
 `
 
 const FloatingCircle = styled.div`
@@ -71,7 +80,12 @@ const FloatingCircle = styled.div`
     display: none;
   }
 `
-const Home = () => {
+export default function Home() {
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const week = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()]
   return (
     <>
       <Content>
@@ -79,10 +93,10 @@ const Home = () => {
           <Logo src={rice}></Logo>
           <TitleWrapper>
             <Title>오늘의 드림타워 식단</Title>
-            <Subtitle>2024년 08월 24일 수요일</Subtitle>
+            <Subtitle>{`${year}년 ${month}월 ${day}일 ${week}요일`}</Subtitle>
           </TitleWrapper>
         </TodayTitleContainer>
-        <MenuCardWrapper></MenuCardWrapper>
+        <MenuCardSection />
         <FloatingCircle>
           <Logo src={kiryong}></Logo>
         </FloatingCircle>
@@ -90,5 +104,3 @@ const Home = () => {
     </>
   )
 }
-
-export default Home
