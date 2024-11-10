@@ -6,7 +6,12 @@ function Header() {
   const location = useLocation()
 
   const getBgColor = () => {
-    if (location.pathname === '/restaurant') return '#333'
+    switch (location.pathname) {
+      case '/':
+        return '#f4f4f4'
+      case '/restaurant':
+        return '#333'
+    }
   }
 
   const getTxtColor = () => {
@@ -15,8 +20,8 @@ function Header() {
   }
 
   const Header = styled.header`
-    background-color: ${(props) => props.bgColor};
-    color: ${(props) => props.txtColor};
+    background-color: ${(props) => props.bgcolor};
+    color: ${(props) => props.txtcolor};
     height: 100px;
     padding: 0px 40px;
     display: flex;
@@ -27,7 +32,7 @@ function Header() {
     }
   `
   const Logo = styled(NavLink)`
-    color: ${(props) => props.txtColor};
+    color: ${(props) => props.txtcolor};
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
@@ -48,7 +53,7 @@ function Header() {
     margin: 0;
   `
   const StyledNavLink = styled(NavLink)`
-    color: ${(props) => props.txtColor};
+    color: ${(props) => props.txtcolor};
 
     text-decoration: none;
     margin-left: 30px;
@@ -67,22 +72,22 @@ function Header() {
   `
   return (
     <>
-      <Header bgColor={getBgColor()} txtColor={getTxtColor()}>
+      <Header bgcolor={getBgColor()} txtcolor={getTxtColor()}>
         <div>
-          <Logo txtColor={getTxtColor()} to="/">
+          <Logo txtcolor={getTxtColor()} to="/">
             기밥
           </Logo>
           <SmallLogo>기룡아 밥먹자</SmallLogo>
         </div>
 
         <MenuBar>
-          <StyledNavLink txtColor={getTxtColor()} to="comment">
+          <StyledNavLink txtcolor={getTxtColor()} to="comment">
             식당후기
           </StyledNavLink>
-          <StyledNavLink txtColor={getTxtColor()} to="restaurant">
+          <StyledNavLink txtcolor={getTxtColor()} to="restaurant">
             교내식당
           </StyledNavLink>
-          <StyledNavLink txtColor={getTxtColor()} to="abc">
+          <StyledNavLink txtcolor={getTxtColor()} to="abc">
             개발자들
           </StyledNavLink>
         </MenuBar>
