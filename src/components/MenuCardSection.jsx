@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { FaStar } from 'react-icons/fa'
+import { IoMdThumbsUp } from 'react-icons/io'
+import { MdOutlineThumbUp } from 'react-icons/md'
 import styled from '@emotion/styled'
 import dormMenus from '../datas/dormMenus.json'
 import reviews from '../datas/reviews.json'
@@ -120,7 +123,7 @@ const Review = styled.div`
   background-color: #fff;
   margin-bottom: 8px;
 `
-const ReviewInfo = styled.p`
+const ReviewInfo = styled.div`
   font-family: Pretendard;
   font-size: 15px;
   font-weight: 600;
@@ -128,6 +131,8 @@ const ReviewInfo = styled.p`
   padding-bottom: 4px;
   cursor: pointer;
   color: #000;
+  display: flex;
+  justify-content: space-between;
 `
 
 const MenuReviewDiv = styled.div`
@@ -153,6 +158,13 @@ const Title = styled.p`
   margin-bottom: 20px;
 `
 
+const LikeBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 4px;
+`
+
 const MenuReview = ({ selectedMenu, menuReviews }) => {
   if (!selectedMenu) return <div>메뉴를 선택하고 리뷰를 확인하세요!</div>
   if (!menuReviews) return <div></div>
@@ -170,11 +182,23 @@ const MenuReview = ({ selectedMenu, menuReviews }) => {
         {selectedReview.reviews.map((review) => (
           <Review key={review.id}>
             <ReviewInfo>
-              {review.memberName}{' '}
-              <span style={{ fontSize: '12px', fontWeight: 500 }}>
-                2024-11-08
+              <span>
+                {review.memberName}{' '}
+                <span style={{ fontSize: '12px', fontWeight: 500 }}>
+                  2024-11-08
+                </span>
               </span>
-              <span>{}</span>
+              <span>
+                <span>
+                  {Array.from({ length: review.rating }).map((_, index) => (
+                    <FaStar size={12} key={index} />
+                  ))}
+                </span>
+                <LikeBtn>
+                  <MdOutlineThumbUp />
+                  {/* <IoMdThumbsUp /> */}
+                </LikeBtn>
+              </span>
             </ReviewInfo>
             {review.content}
           </Review>

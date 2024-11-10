@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import Header from '../components/Header'
+import Header from '../containers/Header'
 
 export default function AppFrame() {
   return (
