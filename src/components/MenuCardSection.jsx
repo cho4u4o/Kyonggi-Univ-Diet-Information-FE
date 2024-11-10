@@ -61,7 +61,13 @@ const MenuCard = styled.div`
 `
 
 const MenuDiv = styled.div`
+  margin: 0 auto;
   flex-direction: column;
+  text-align: center;
+  padding-right: 20px;
+  @media (max-width: 480px) {
+    padding: 0;
+  }
 `
 
 const MenuSelectorBtn = styled.button`
@@ -81,8 +87,6 @@ const MenuSelectorBtn = styled.button`
 
   @media (max-width: 480px) {
     width: 16vw;
-    margin-right: ${(props) => props.marginright}px;
-    margin-bottom: 0;
     height: 30px;
   }
 `
@@ -100,8 +104,30 @@ const Menu = styled.p`
 const menuItems = dormMenus.DormMenus
 const menuReviews = reviews.DormMenuReviews
 
-const Review = styled.p`
+const ReviewScrollView = styled.div`
+  overflow: scroll;
+  height: 44vh;
+`
+
+const Review = styled.div`
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 0px;
   font-family: Pretendard;
+  font-size: 15px;
+  line-height: 1.5em;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 8px;
+`
+const ReviewInfo = styled.p`
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  color: #000;
 `
 
 const MenuReviewDiv = styled.div`
@@ -109,8 +135,7 @@ const MenuReviewDiv = styled.div`
   box-sizing: border-box;
   padding: 20px;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
   width: 50vw;
   height: 55vh;
   background-color: #f4f4f4;
@@ -120,6 +145,12 @@ const MenuReviewDiv = styled.div`
   @media (max-width: 480px) {
     display: none;
   }
+`
+
+const Title = styled.p`
+  font-size: 25px;
+  margin: 0;
+  margin-bottom: 20px;
 `
 
 const MenuReview = ({ selectedMenu, menuReviews }) => {
@@ -132,11 +163,23 @@ const MenuReview = ({ selectedMenu, menuReviews }) => {
 
   return (
     <div>
-      {selectedReview.reviews.map((review) => (
-        <Review key={review.id} memberName={review.memberName}>
-          {review.content}
-        </Review>
-      ))}
+      <Title>
+        <b>{selectedMenu}</b>, 어떨까?
+      </Title>
+      <ReviewScrollView>
+        {selectedReview.reviews.map((review) => (
+          <Review key={review.id}>
+            <ReviewInfo>
+              {review.memberName}{' '}
+              <span style={{ fontSize: '12px', fontWeight: 500 }}>
+                2024-11-08
+              </span>
+              <span>{}</span>
+            </ReviewInfo>
+            {review.content}
+          </Review>
+        ))}
+      </ReviewScrollView>
     </div>
   )
 }
