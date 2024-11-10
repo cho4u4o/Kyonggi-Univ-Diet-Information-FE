@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 import { IoMdThumbsUp } from 'react-icons/io'
 import { MdOutlineThumbUp } from 'react-icons/md'
+import {
+  MdFreeBreakfast,
+  MdLunchDining,
+  MdDinnerDining,
+  MdOutlineMenuBook,
+} from 'react-icons/md'
 import styled from '@emotion/styled'
 import dormMenus from '../datas/dormMenus.json'
 import reviews from '../datas/reviews.json'
@@ -76,6 +82,8 @@ const MenuDiv = styled.div`
 const MenuSelectorBtn = styled.button`
   justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
   border: none;
   background-color: ${(props) => (props.isSelected ? '#00abaa' : '#fff')};
   color: ${(props) => (props.isSelected ? '#fff' : '#000')};
@@ -84,6 +92,7 @@ const MenuSelectorBtn = styled.button`
   width: 80px;
   font-size: 16px;
   font-family: Pretendard;
+  line-height: 2em;
   transition:
     background-color 0.3s ease,
     background-position 0.3s ease;
@@ -169,8 +178,24 @@ const LikeBtn = styled.button`
   margin-left: 4px;
 `
 
+const Unselected = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  line-height: 3em;
+`
+
 const MenuReview = ({ selectedMenu, menuReviews }) => {
-  if (!selectedMenu) return <center>메뉴를 선택하고 리뷰를 확인하세요!</center>
+  if (!selectedMenu)
+    return (
+      <Unselected>
+        <MdOutlineMenuBook size={35} />
+        메뉴를 선택하고 리뷰를 확인하세요!
+      </Unselected>
+    )
   if (!menuReviews) return <div></div>
 
   const selectedReview = menuReviews.find((item) => item.id === selectedMenu)
@@ -221,12 +246,21 @@ export default function MenuCardSection() {
       <MenuSelector>
         {Array.from({ length: 3 }).map((_, index) => {
           const labels = ['아침', '점심', '저녁']
+          const icons = [
+            <MdFreeBreakfast />,
+            <MdLunchDining />,
+            <MdDinnerDining />,
+          ]
           return (
             <MenuSelectorBtn
               key={index}
-              onClick={() => setClicked(index)}
+              onClick={() => {
+                setClicked(index)
+                setSelectedMenu(null)
+              }}
               isSelected={clicked === index}
             >
+              {icons[index]}
               {labels[index]}
             </MenuSelectorBtn>
           )
