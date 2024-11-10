@@ -68,6 +68,7 @@ function Header() {
 
     @media (max-width: 480px) {
       margin-left: 10px;
+      font-size: 12px;
     }
   `
   return (
