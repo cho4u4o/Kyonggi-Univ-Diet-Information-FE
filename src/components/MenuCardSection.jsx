@@ -101,7 +101,11 @@ const Menu = styled.p`
   margin: 0px;
   padding-top: 8px;
   cursor: pointer;
-  color: ${(props) => (props.isSpecial ? '#00AAA9' : '#000000')};
+  color: ${(props) => (props.isSelected ? '#00abaa' : '#000')};
+
+  &:hover {
+    color: #00abaa;
+  }
 `
 
 const menuItems = dormMenus.DormMenus
@@ -166,7 +170,7 @@ const LikeBtn = styled.button`
 `
 
 const MenuReview = ({ selectedMenu, menuReviews }) => {
-  if (!selectedMenu) return <div>메뉴를 선택하고 리뷰를 확인하세요!</div>
+  if (!selectedMenu) return <center>메뉴를 선택하고 리뷰를 확인하세요!</center>
   if (!menuReviews) return <div></div>
 
   const selectedReview = menuReviews.find((item) => item.id === selectedMenu)
@@ -233,7 +237,7 @@ export default function MenuCardSection() {
           {menuItems[clicked].menus.map((menu, index) => (
             <Menu
               key={index}
-              isSpecial={index === 1 || index === 3}
+              isSelected={selectedMenu === menu}
               onClick={() => {
                 setSelectedMenu(menu)
               }}
