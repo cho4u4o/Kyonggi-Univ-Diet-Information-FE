@@ -1,10 +1,9 @@
 import styled from '@emotion/styled'
 import ReviewInput from '../components/ReviewInput'
 import Carousel from '../components/BestReviewCarousel'
-import { EmblaOptionsType } from 'embla-carousel'
 import ReviewPagination from '../components/ReviewPagination'
 
-const OPTIONS: EmblaOptionsType = { align: 'start', loop: true }
+const OPTIONS = { align: 'start', loop: true }
 const SLIDE_COUNT = 7
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 

@@ -1,10 +1,6 @@
 import styled from '@emotion/styled'
 import { forwardRef, useState } from 'react'
 
-interface Props {
-  title: string
-}
-
 const ExpandedCardContainer = styled.div`
   position: fixed;
   top: 0;
@@ -141,7 +137,7 @@ const MenuContainer = styled.div`
   }
 `
 
-const Menu = styled.p<{ isActive?: boolean }>`
+const Menu = styled.p`
   font-family: Pretendard;
   font-size: 28px;
   font-weight: 700;
@@ -176,7 +172,7 @@ const Stepper = styled.div`
   margin-bottom: 10px;
 `
 
-const Step = styled.div<{ isActive?: boolean }>`
+const Step = styled.div`
   width: 4px;
   height: 68px;
   display: flex;
@@ -209,15 +205,16 @@ const menuItems = [
   '요구르트',
 ]
 
-const ExpandedMenuCard = forwardRef<HTMLDivElement, Props>(({ title }, ref) => {
+const ExpandedMenuCard = forwardRef(({ title }, ref) => {
   const [activeStep, setActiveStep] = useState(0)
+
   return (
     <ExpandedCardContainer>
       <Card ref={ref}>
         <Title>
           <span>오늘의</span>
           {title}
-        </Title>{' '}
+        </Title>
         <MenuContainer>
           <Stepper>
             {menuItems.map((_, index) => (
@@ -239,7 +236,7 @@ const ExpandedMenuCard = forwardRef<HTMLDivElement, Props>(({ title }, ref) => {
               </Menu>
             ))}
           </MenuWrapper>
-        </MenuContainer>{' '}
+        </MenuContainer>
         <ReviewContainer>
           <ReviewTitle>
             {menuItems[activeStep]}

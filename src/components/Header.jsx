@@ -1,8 +1,22 @@
 import styled from '@emotion/styled'
+import { useLocation } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
 function Header() {
+  const location = useLocation()
+
+  const getBgColor = () => {
+    if (location.pathname === '/restaurant') return '#333'
+  }
+
+  const getTxtColor = () => {
+    if (location.pathname === '/restaurant') return '#fff'
+    else return '#000'
+  }
+
   const Header = styled.header`
+    background-color: ${(props) => props.bgColor};
+    color: ${(props) => props.txtColor};
     height: 100px;
     padding: 0px 40px;
     display: flex;
@@ -13,10 +27,10 @@ function Header() {
     }
   `
   const Logo = styled(NavLink)`
+    color: ${(props) => props.txtColor};
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
-    color: #222;
     @media (max-width: 480px) {
       font-size: 25px;
     }
@@ -34,9 +48,10 @@ function Header() {
     margin: 0;
   `
   const StyledNavLink = styled(NavLink)`
-    color: black;
+    color: ${(props) => props.txtColor};
+
     text-decoration: none;
-    margin-left: 15px;
+    margin-left: 30px;
 
     &.active {
       color: #00abaa;
@@ -52,16 +67,24 @@ function Header() {
   `
   return (
     <>
-      <Header>
+      <Header bgColor={getBgColor()} txtColor={getTxtColor()}>
         <div>
-          <Logo to="/">기밥</Logo>
+          <Logo txtColor={getTxtColor()} to="/">
+            기밥
+          </Logo>
           <SmallLogo>기룡아 밥먹자</SmallLogo>
         </div>
 
         <MenuBar>
-          <StyledNavLink to="comment">식당후기</StyledNavLink>
-          <StyledNavLink to="abc">교내식당</StyledNavLink>
-          <StyledNavLink to="abc">개발자들</StyledNavLink>
+          <StyledNavLink txtColor={getTxtColor()} to="comment">
+            식당후기
+          </StyledNavLink>
+          <StyledNavLink txtColor={getTxtColor()} to="restaurant">
+            교내식당
+          </StyledNavLink>
+          <StyledNavLink txtColor={getTxtColor()} to="abc">
+            개발자들
+          </StyledNavLink>
         </MenuBar>
       </Header>
     </>

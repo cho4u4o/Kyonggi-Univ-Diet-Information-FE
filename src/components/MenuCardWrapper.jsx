@@ -46,14 +46,14 @@ const MenuCardWrapper = () => {
   const { expandedCard, setExpandedCard, closeExpandedCard } =
     useExpandedCardStore()
 
-  const handleCardClick = (title: string) => {
+  const handleCardClick = (title) => {
     setExpandedCard(expandedCard === title ? null : title)
   }
 
-  const expandedCardRef = useRef<HTMLDivElement | null>(null)
+  const expandedCardRef = (useRef < HTMLDivElement) | (null > null)
 
   useEffect(() => {
-    const handler = (e: { target: any }) => {
+    const handler = (e) => {
       if (
         expandedCardRef.current &&
         !expandedCardRef.current.contains(e.target)

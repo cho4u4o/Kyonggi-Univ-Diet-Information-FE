@@ -1,14 +1,6 @@
 import styled from '@emotion/styled'
 
-function BestReviewCard({
-  restaurant,
-  comment,
-  score,
-}: {
-  restaurant: string
-  comment: string
-  score: number
-}) {
+export default function BestReviewCard({ restaurant, comment, score }) {
   const CardContainer = styled.div`
     background: linear-gradient(#f4f4f4, rgba(212, 241, 241, 0.4));
     padding: 30px;
@@ -39,7 +31,7 @@ function BestReviewCard({
       font-size: 12px;
     }
   `
-  const Restaurant = ({ restaurant }: { restaurant: string }) => (
+  const Restaurant = ({ restaurant }) => (
     <a>
       <u>
         <b>{restaurant}</b>
@@ -83,5 +75,3 @@ function BestReviewCard({
     </CardContainer>
   )
 }
-
-export default BestReviewCard

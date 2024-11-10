@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel'
+import useEmblaCarousel from 'embla-carousel-react'
 import {
   PrevButton,
   NextButton,
   usePrevNextButtons,
 } from './BestReviewCarouselArrowButtons'
 import Autoplay from 'embla-carousel-autoplay'
-import useEmblaCarousel from 'embla-carousel-react'
-import Card from '../components/BestReviewCard'
 import styled from '@emotion/styled'
+import Card from './BestReviewCard'
 
 const reviews = Array.from({ length: 7 }).map((_, i) => ({
   score: i + 1,
@@ -33,11 +32,13 @@ const CarouselWrapper = styled.div`
   width: 100%;
   overflow: hidden;
 `
+
 const CarouselItemWrapper = styled.div`
   display: flex;
   touch-action: pan-y pinch-zoom;
   margin-left: calc(var(--slide-spacing) * -1);
 `
+
 const CarouselItem = styled.div`
   transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size);
@@ -45,11 +46,13 @@ const CarouselItem = styled.div`
   padding-left: var(--slide-spacing);
   display: flex;
 `
+
 const CarouselControls = styled.div`
   display: flex;
   margin-top: 30px;
   align-items: center;
 `
+
 const CarouselButtons = styled.div`
   width: 200px;
   display: flex;
@@ -57,20 +60,12 @@ const CarouselButtons = styled.div`
   justify-content: space-between;
 `
 
-interface CarouselIndicatorProps {
-  slides: number[]
-  emblaApi: EmblaCarouselType | undefined
-}
-
 const CarouselIndicatorWrapper = styled.div`
   width: 100%;
   display: flex;
 `
 
-const CarouselIndicator: React.FC<CarouselIndicatorProps> = ({
-  slides,
-  emblaApi,
-}) => {
+const CarouselIndicator = ({ slides, emblaApi }) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   useEffect(() => {
@@ -106,16 +101,10 @@ const CarouselIndicator: React.FC<CarouselIndicatorProps> = ({
   )
 }
 
-type PropType = {
-  slides: number[]
-  options?: EmblaOptionsType
-}
-
-const Carousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props
+const Carousel = ({ slides, options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
 
-  const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
+  const onNavButtonClick = useCallback((emblaApi) => {
     const autoplay = emblaApi?.plugins()?.autoplay
     if (!autoplay) return
 
