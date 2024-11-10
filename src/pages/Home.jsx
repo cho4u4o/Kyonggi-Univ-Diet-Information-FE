@@ -7,7 +7,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 100px);
   margin: 0;
   background-color: #f4f4f4;
@@ -32,7 +32,7 @@ const TodayTitleContainer = styled.div`
 const Logo = styled.img`
   margin: 0;
   @media (max-width: 480px) {
-    width: 80px;
+    display: none;
   }
 `
 
@@ -46,6 +46,8 @@ const TitleWrapper = styled.div`
 
   @media (max-width: 480px) {
     justify-content: center;
+    text-align: center;
+    padding-top: 20px;
   }
 `
 
@@ -55,10 +57,8 @@ const Title = styled.p`
   font-weight: 700;
   margin: 0;
   @media (max-width: 480px) {
-    font-size: 25px;
-  }
-  @media (max-width: 390px) {
-    font-size: 20px;
+    font-size: 22px;
+    width: 250px;
   }
 `
 
@@ -67,8 +67,11 @@ const Subtitle = styled.p`
   font-size: 20px;
   font-weight: 600;
   margin-top: 4px;
-  @media (max-width: 390px) {
+  @media (max-width: 480px) {
     font-size: 15px;
+    width: 250px;
+    padding: 0;
+    margin-bottom: 20px;
   }
 `
 

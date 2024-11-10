@@ -39,11 +39,11 @@ const MenuCard = styled.div`
   padding: 20px;
 
   @media (max-width: 480px) {
-    border-radius: 0 0 30px 30px;
+    align-items: start;
+    border-radius: 15px;
     border: none;
-    width: 80vw;
+    width: 85vw;
     height: 400px;
-    align-items: flex-start;
   }
   @media (max-width: 390px) {
     height: 370px;
@@ -58,6 +58,8 @@ const MenuDiv = styled.div`
 
   @media (max-width: 480px) {
     padding: 0;
+    text-align: start;
+    margin: 0;
   }
 `
 
@@ -74,13 +76,14 @@ const MenuSelector = styled.div`
   margin-right: 20px;
 
   @media (max-width: 480px) {
-    border-radius: 30px 30px 0 0;
+    background-color: transparent;
     border: none;
     width: 80vw;
-    height: 10vh;
+    height: 32px;
     display: flex;
     flex-direction: row;
     margin: 0;
+    margin-bottom: 10px;
   }
 `
 
@@ -91,7 +94,7 @@ const MenuSelectorBtn = styled.button`
   flex-direction: column;
   border: none;
   background-color: ${(props) => (props.isSelected ? '#00abaa' : '#fff')};
-  color: ${(props) => (props.isSelected ? '#fff' : '#000')};
+  color: ${(props) => (props.isSelected ? '#fff' : '#ccc')};
   cursor: pointer;
   height: 140px;
   width: 80px;
@@ -103,17 +106,19 @@ const MenuSelectorBtn = styled.button`
 
   @media (max-width: 480px) {
     width: 16vw;
-    height: 50px;
-    font-size: 20px;
+    height: 32px;
+    font-size: 15px;
+    border-radius: 15px;
+    margin-right: ${(props) => props.marginright}px;
   }
 `
 
 const Menu = styled.p`
   font-family: Pretendard;
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
   margin: 0px;
-  padding-top: 8px;
+  padding-top: 12px;
   cursor: pointer;
   color: ${(props) => (props.isSelected ? '#00abaa' : '#000')};
 
@@ -121,8 +126,9 @@ const Menu = styled.p`
     color: #00abaa;
   }
 
-  @media (max-width: 390px) {
-    font-size: 25px;
+  @media (max-width: 480px) {
+    padding-top: 8px;
+    font-size: 15px;
   }
 `
 
@@ -274,6 +280,7 @@ export default function MenuCardSection() {
                 setSelectedMenu(null)
               }}
               isSelected={clicked === index}
+              marginright={index === 2 ? 0 : 10}
             >
               <Icons> {icons[index]}</Icons>
               {labels[index]}
