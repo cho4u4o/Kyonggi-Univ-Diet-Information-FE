@@ -26,6 +26,41 @@ const MenuCardContainer = styled.div`
   }
 `
 
+const MenuCard = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  height: 60vh;
+  border: none;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 20px;
+
+  @media (max-width: 480px) {
+    border-radius: 0 0 30px 30px;
+    border: none;
+    width: 80vw;
+    height: 400px;
+    align-items: flex-start;
+  }
+  @media (max-width: 390px) {
+    height: 370px;
+  }
+`
+
+const MenuDiv = styled.div`
+  margin: 0 auto;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 20px;
+
+  @media (max-width: 480px) {
+    padding: 0;
+  }
+`
+
 const MenuSelector = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,40 +77,10 @@ const MenuSelector = styled.div`
     border-radius: 30px 30px 0 0;
     border: none;
     width: 80vw;
-    height: 50px;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     margin: 0;
-  }
-`
-
-const MenuCard = styled.div`
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
-  width: 80vw;
-  height: 60vh;
-  border: none;
-  border-radius: 30px;
-  background-color: #fff;
-  padding: 20px;
-  @media (max-width: 480px) {
-    border-radius: 0 0 30px 30px;
-    border: none;
-    width: 80vw;
-    height: 50vh;
-    justify-content: center;
-  }
-`
-
-const MenuDiv = styled.div`
-  margin: 0 auto;
-  flex-direction: column;
-  text-align: center;
-  padding-right: 20px;
-  @media (max-width: 480px) {
-    padding: 0;
   }
 `
 
@@ -92,14 +97,14 @@ const MenuSelectorBtn = styled.button`
   width: 80px;
   font-size: 16px;
   font-family: Pretendard;
-  line-height: 2em;
   transition:
     background-color 0.3s ease,
     background-position 0.3s ease;
 
   @media (max-width: 480px) {
     width: 16vw;
-    height: 30px;
+    height: 50px;
+    font-size: 20px;
   }
 `
 
@@ -114,6 +119,10 @@ const Menu = styled.p`
 
   &:hover {
     color: #00abaa;
+  }
+
+  @media (max-width: 390px) {
+    font-size: 25px;
   }
 `
 
@@ -155,7 +164,7 @@ const MenuReviewDiv = styled.div`
   flex-direction: column;
 
   width: 50vw;
-  height: 55vh;
+  height: 100%;
   background-color: #f4f4f4;
   border-radius: 15px;
   font-family: Pretendard;
@@ -186,6 +195,12 @@ const Unselected = styled.div`
   width: 100%;
   height: 100%;
   line-height: 3em;
+`
+
+const Icons = styled.p`
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 
 const MenuReview = ({ selectedMenu, menuReviews }) => {
@@ -247,9 +262,9 @@ export default function MenuCardSection() {
         {Array.from({ length: 3 }).map((_, index) => {
           const labels = ['아침', '점심', '저녁']
           const icons = [
-            <MdFreeBreakfast />,
-            <MdLunchDining />,
-            <MdDinnerDining />,
+            <MdFreeBreakfast size={20} />,
+            <MdLunchDining size={20} />,
+            <MdDinnerDining size={20} />,
           ]
           return (
             <MenuSelectorBtn
@@ -260,7 +275,7 @@ export default function MenuCardSection() {
               }}
               isSelected={clicked === index}
             >
-              {icons[index]}
+              <Icons> {icons[index]}</Icons>
               {labels[index]}
             </MenuSelectorBtn>
           )
