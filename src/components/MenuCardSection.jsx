@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import dormMenus from '../datas/dormMenus.json'
+import reviews from '../datas/reviews.json'
 
 const MenuCardContainer = styled.div`
   width: 100vw;
@@ -42,9 +43,8 @@ const MenuSelector = styled.div`
 const MenuCard = styled.div`
   display: flex;
   box-sizing: border-box;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: space-between;
+  align-items: center;
   width: 80vw;
   height: 60vh;
   border: none;
@@ -56,8 +56,12 @@ const MenuCard = styled.div`
     border: none;
     width: 80vw;
     height: 50vh;
-    align-items: center;
+    justify-content: center;
   }
+`
+
+const MenuDiv = styled.div`
+  flex-direction: column;
 `
 
 const MenuSelectorBtn = styled.button`
@@ -88,45 +92,92 @@ const Menu = styled.p`
   font-size: 30px;
   font-weight: 600;
   margin: 0px;
-  padding: 4px;
+  padding-top: 8px;
+  cursor: pointer;
   color: ${(props) => (props.isSpecial ? '#00AAA9' : '#000000')};
 `
 
 const menuItems = dormMenus.DormMenus
+const menuReviews = reviews.DormMenuReviews
+
+const Review = styled.p`
+  font-family: Pretendard;
+`
+
+const MenuReviewDiv = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 55vh;
+  background-color: #f4f4f4;
+  border-radius: 15px;
+  font-family: Pretendard;
+  font-size: 20px;
+  @media (max-width: 480px) {
+    display: none;
+  }
+`
+
+const MenuReview = ({ selectedMenu, menuReviews }) => {
+  if (!selectedMenu) return <div>메뉴를 선택하고 리뷰를 확인하세요!</div>
+  if (!menuReviews) return <div></div>
+
+  const selectedReview = menuReviews.find((item) => item.id === selectedMenu)
+
+  if (!selectedReview) return <div>리뷰를 찾을 수 없습니다.</div>
+
+  return (
+    <div>
+      {selectedReview.reviews.map((review) => (
+        <Review key={review.id} memberName={review.memberName}>
+          {review.content}
+        </Review>
+      ))}
+    </div>
+  )
+}
 
 export default function MenuCardSection() {
   const [clicked, setClicked] = useState(0)
+  const [selectedMenu, setSelectedMenu] = useState(null)
 
   return (
     <MenuCardContainer>
       <MenuSelector>
-        <MenuSelectorBtn
-          marginright={10}
-          onClick={() => setClicked(0)}
-          isSelected={clicked === 0}
-        >
-          아침
-        </MenuSelectorBtn>
-        <MenuSelectorBtn
-          marginright={10}
-          onClick={() => setClicked(1)}
-          isSelected={clicked === 1}
-        >
-          점심
-        </MenuSelectorBtn>
-        <MenuSelectorBtn
-          onClick={() => setClicked(2)}
-          isSelected={clicked === 2}
-        >
-          저녁
-        </MenuSelectorBtn>
+        {Array.from({ length: 3 }).map((_, index) => {
+          const labels = ['아침', '점심', '저녁']
+          return (
+            <MenuSelectorBtn
+              key={index}
+              onClick={() => setClicked(index)}
+              isSelected={clicked === index}
+            >
+              {labels[index]}
+            </MenuSelectorBtn>
+          )
+        })}
       </MenuSelector>
       <MenuCard>
-        {menuItems[clicked].menus.map((menu, index) => (
-          <Menu key={index} isSpecial={index === 1 || index === 3}>
-            {menu}
-          </Menu>
-        ))}
+        <MenuDiv>
+          {menuItems[clicked].menus.map((menu, index) => (
+            <Menu
+              key={index}
+              isSpecial={index === 1 || index === 3}
+              onClick={() => {
+                setSelectedMenu(menu)
+              }}
+            >
+              {menu}
+            </Menu>
+          ))}
+        </MenuDiv>
+        <MenuReviewDiv>
+          <MenuReview selectedMenu={selectedMenu} menuReviews={menuReviews} />
+        </MenuReviewDiv>
       </MenuCard>
     </MenuCardContainer>
   )

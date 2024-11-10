@@ -279,5 +279,245 @@
       "rating": 5,
       "content": "Absolutely loved the experience! Will return soon."
     }
+  ],
+  "DormMenuReviews": [
+    {
+      "id": "쌀밥",
+      "reviews": [
+        {
+          "id": "n1",
+          "memberName": "김진태",
+          "content": "쌀밥이 고슬고슬하고 맛있었어요!",
+          "rating": 5
+        },
+        {
+          "id": "n2",
+          "memberName": "박지민",
+          "content": "조금 더 따뜻했으면 좋겠어요.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": "북어해장국",
+      "reviews": [
+        {
+          "id": "n3",
+          "memberName": "이수정",
+          "content": "해장국이 진하고 맛있었어요.",
+          "rating": 4
+        },
+        {
+          "id": "n4",
+          "memberName": "최민수",
+          "content": "북어가 조금 더 부드러웠으면 좋겠어요.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": "돈사태김치찜",
+      "reviews": [
+        {
+          "id": "n5",
+          "memberName": "한예진",
+          "content": "김치찜이 아주 훌륭했어요!",
+          "rating": 5
+        },
+        {
+          "id": "n6",
+          "memberName": "정우성",
+          "content": "조금 맵지만 맛있었어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "오징어볼강정",
+      "reviews": [
+        {
+          "id": "n7",
+          "memberName": "강수현",
+          "content": "달콤짭짤한 소스가 좋았어요.",
+          "rating": 5
+        },
+        {
+          "id": "n8",
+          "memberName": "유지호",
+          "content": "조금 기름졌지만 괜찮았어요.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": "연두부",
+      "reviews": [
+        {
+          "id": "n9",
+          "memberName": "송하윤",
+          "content": "건강한 맛이에요.",
+          "rating": 4
+        },
+        {
+          "id": "n10",
+          "memberName": "장민혁",
+          "content": "조금 심심한 맛이었어요.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": "도시락김",
+      "reviews": [
+        {
+          "id": "n11",
+          "memberName": "홍진우",
+          "content": "바삭바삭하고 맛있었어요.",
+          "rating": 5
+        },
+        {
+          "id": "n12",
+          "memberName": "최다인",
+          "content": "평범한 김이었어요.",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": "요구르트",
+      "reviews": [
+        {
+          "id": "n13",
+          "memberName": "이예슬",
+          "content": "식사 후 깔끔하게 마무리하기 좋았어요.",
+          "rating": 5
+        },
+        {
+          "id": "n14",
+          "memberName": "김태훈",
+          "content": "양이 조금 적었어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "흑미밥",
+      "reviews": [
+        {
+          "id": "n15",
+          "memberName": "문수진",
+          "content": "쫀득하고 건강한 맛이었어요.",
+          "rating": 5
+        },
+        {
+          "id": "n16",
+          "memberName": "이상준",
+          "content": "생각보다 고소한 맛이 강했어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "된장찌개",
+      "reviews": [
+        {
+          "id": "n17",
+          "memberName": "박재형",
+          "content": "된장이 깊고 진한 맛이었어요.",
+          "rating": 5
+        },
+        {
+          "id": "n18",
+          "memberName": "최은지",
+          "content": "간이 딱 맞았어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "제육볶음",
+      "reviews": [
+        {
+          "id": "n19",
+          "memberName": "한예슬",
+          "content": "매콤하고 밥이랑 잘 어울렸어요.",
+          "rating": 5
+        },
+        {
+          "id": "n20",
+          "memberName": "김지호",
+          "content": "고기가 부드러워 좋았어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "고등어구이",
+      "reviews": [
+        {
+          "id": "n21",
+          "memberName": "이하늘",
+          "content": "고등어가 신선하고 맛있었어요.",
+          "rating": 5
+        },
+        {
+          "id": "n22",
+          "memberName": "최동욱",
+          "content": "약간 더 바삭하면 좋겠어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "시금치나물",
+      "reviews": [
+        {
+          "id": "n23",
+          "memberName": "김현수",
+          "content": "신선하고 아삭한 맛이 좋았어요.",
+          "rating": 5
+        },
+        {
+          "id": "n24",
+          "memberName": "박수진",
+          "content": "간이 적당했어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "배추김치",
+      "reviews": [
+        {
+          "id": "n25",
+          "memberName": "한수연",
+          "content": "적당히 익어서 좋았어요.",
+          "rating": 5
+        },
+        {
+          "id": "n26",
+          "memberName": "이준호",
+          "content": "약간 더 매웠으면 좋겠어요.",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": "바나나",
+      "reviews": [
+        {
+          "id": "n27",
+          "memberName": "정수진",
+          "content": "디저트로 적당했어요.",
+          "rating": 5
+        },
+        {
+          "id": "n28",
+          "memberName": "최영수",
+          "content": "조금 더 신선했으면 좋겠어요.",
+          "rating": 4
+        }
+      ]
+    }
   ]
 }
