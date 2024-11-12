@@ -80,11 +80,7 @@ function Header() {
           </Logo>
           <SmallLogo>기룡아 밥먹자</SmallLogo>
         </div>
-
         <MenuBar>
-          <StyledNavLink txtcolor={getTxtColor()} to="comment">
-            식당후기
-          </StyledNavLink>
           <StyledNavLink txtcolor={getTxtColor()} to="restaurant">
             교내식당
           </StyledNavLink>
