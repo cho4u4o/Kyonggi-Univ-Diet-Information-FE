@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import rice from '../assets/rice.svg';
 import kiryong from '../assets/kiryong-notice.svg';
 import MenuCardSection from '../components/MenuCardSection';
+import { getTodayDate } from '../utils/getTodayDate';
 
 const Content = styled.div`
   display: flex;
@@ -95,19 +96,13 @@ const FloatingCircle = styled.div`
 `;
 
 export default function Home() {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const week = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
-
   return (
     <Content>
       <TodayTitleContainer>
         <Logo src={rice} />
         <TitleWrapper>
           <Title>오늘의 드림타워 식단</Title>
-          <Subtitle>{`${year}년 ${month}월 ${day}일 ${week}요일`}</Subtitle>
+          <Subtitle>{getTodayDate('all')}</Subtitle>
         </TitleWrapper>
       </TodayTitleContainer>
       <MenuCardSection />
