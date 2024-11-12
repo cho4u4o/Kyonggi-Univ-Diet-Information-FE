@@ -125,7 +125,6 @@ const ReviewPagination = () => {
           />
         ))}
       </div>
-
       <ButtonWrapper>
         {totalPages > PAGE_OPTIONS.PAGES_PER_GROUP &&
           currentPage > PAGE_OPTIONS.PAGES_PER_GROUP && (

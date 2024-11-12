@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import rice from '../assets/rice.svg'
-import kiryong from '../assets/kiryong-notice.svg'
-import MenuCardSection from '../components/MenuCardSection'
+import styled from '@emotion/styled';
+import rice from '../assets/rice.svg';
+import kiryong from '../assets/kiryong-notice.svg';
+import MenuCardSection from '../components/MenuCardSection';
 
 const Content = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Content = styled.div`
     flex-direction: column;
     height: calc(100vh - 70px);
   }
-`
+`;
 
 const TodayTitleContainer = styled.div`
   display: flex;
@@ -27,14 +27,14 @@ const TodayTitleContainer = styled.div`
   @media (max-width: 480px) {
     justify-content: center;
   }
-`
+`;
 
 const Logo = styled.img`
   margin: 0;
   @media (max-width: 480px) {
     display: none;
   }
-`
+`;
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -49,7 +49,7 @@ const TitleWrapper = styled.div`
     text-align: center;
     padding-top: 20px;
   }
-`
+`;
 
 const Title = styled.p`
   font-family: Pretendard;
@@ -60,7 +60,7 @@ const Title = styled.p`
     font-size: 22px;
     width: 250px;
   }
-`
+`;
 
 const Subtitle = styled.p`
   font-family: Pretendard;
@@ -73,7 +73,7 @@ const Subtitle = styled.p`
     padding: 0;
     margin-bottom: 20px;
   }
-`
+`;
 
 const FloatingCircle = styled.div`
   position: fixed;
@@ -92,28 +92,28 @@ const FloatingCircle = styled.div`
   @media (max-width: 480px) {
     display: none;
   }
-`
+`;
+
 export default function Home() {
-  const date = new Date()
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const week = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()]
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const week = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
+
   return (
-    <>
-      <Content>
-        <TodayTitleContainer>
-          <Logo src={rice}></Logo>
-          <TitleWrapper>
-            <Title>오늘의 드림타워 식단</Title>
-            <Subtitle>{`${year}년 ${month}월 ${day}일 ${week}요일`}</Subtitle>
-          </TitleWrapper>
-        </TodayTitleContainer>
-        <MenuCardSection />
-        <FloatingCircle>
-          <Logo src={kiryong}></Logo>
-        </FloatingCircle>
-      </Content>
-    </>
-  )
+    <Content>
+      <TodayTitleContainer>
+        <Logo src={rice} />
+        <TitleWrapper>
+          <Title>오늘의 드림타워 식단</Title>
+          <Subtitle>{`${year}년 ${month}월 ${day}일 ${week}요일`}</Subtitle>
+        </TitleWrapper>
+      </TodayTitleContainer>
+      <MenuCardSection />
+      <FloatingCircle>
+        <Logo src={kiryong} />
+      </FloatingCircle>
+    </Content>
+  );
 }

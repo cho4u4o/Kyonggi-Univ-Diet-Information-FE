@@ -225,35 +225,39 @@ const MenuReview = ({ selectedMenu, menuReviews }) => {
 
   return (
     <div>
-      <Title>
-        <b>{selectedMenu}</b>, 어떨까?
-      </Title>
-      <ReviewScrollView>
-        {selectedReview.reviews.map((review) => (
-          <Review key={review.id}>
-            <ReviewInfo>
-              <span>
-                {review.memberName}{' '}
-                <span style={{ fontSize: '12px', fontWeight: 500 }}>
-                  2024-11-08
-                </span>
-              </span>
-              <span>
-                <span>
-                  {Array.from({ length: review.rating }).map((_, index) => (
-                    <FaStar size={12} key={index} />
-                  ))}
-                </span>
-                <LikeBtn>
-                  <MdOutlineThumbUp />
-                  {/* <IoMdThumbsUp /> */}
-                </LikeBtn>
-              </span>
-            </ReviewInfo>
-            {review.content}
-          </Review>
-        ))}
-      </ReviewScrollView>
+      {menuReviews && (
+        <>
+          <Title>
+            <b>{selectedMenu}</b>, 어떨까?
+          </Title>
+          <ReviewScrollView>
+            {selectedReview.reviews.map((review) => (
+              <Review key={review.id}>
+                <ReviewInfo>
+                  <span>
+                    {review.memberName}{' '}
+                    <span style={{ fontSize: '12px', fontWeight: 500 }}>
+                      2024-11-08
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      {Array.from({ length: review.rating }).map((_, index) => (
+                        <FaStar size={12} key={index} />
+                      ))}
+                    </span>
+                    <LikeBtn>
+                      <MdOutlineThumbUp />
+                      {/* <IoMdThumbsUp /> */}
+                    </LikeBtn>
+                  </span>
+                </ReviewInfo>
+                {review.content}
+              </Review>
+            ))}
+          </ReviewScrollView>
+        </>
+      )}
     </div>
   )
 }
