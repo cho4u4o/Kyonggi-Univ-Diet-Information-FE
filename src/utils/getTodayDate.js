@@ -10,8 +10,14 @@ export const getTodayDate = (request) => {
       return `${year}년 ${month}월 ${day}일 ${week}요일`;
 
     case 'weekday':
-      return ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'][
-        date.getDay()
-      ];
+      return [
+        'SUNDAY',
+        'MONDAY',
+        'TUESDAY',
+        'WEDNESDAY',
+        'THURSDAY',
+        'FRIDAY',
+        'SATURDAY',
+      ][date.getDay()];
   }
 };
