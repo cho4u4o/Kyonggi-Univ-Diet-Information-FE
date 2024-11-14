@@ -30,9 +30,6 @@ export default function MenuCardSection() {
     });
   }, []);
 
-  console.log(weeklyMenu);
-  console.log(todayMenu);
-
   const menuItems = todayMenu;
   const menuReviews = reviews.DormMenuReviews;
   const labels = ['BREAKFAST', 'LUNCH', 'DINNER'];
@@ -267,7 +264,7 @@ const MenuReviewDiv = styled.div`
   }
 `;
 
-const Title = styled.p`
+const ReviewTitle = styled.p`
   font-size: 25px;
   margin: 0;
   margin-bottom: 20px;
@@ -314,9 +311,9 @@ const MenuReview = ({ selectedMenu, menuReviews }) => {
     <div>
       {menuReviews && (
         <>
-          <Title>
+          <ReviewTitle>
             <b>{selectedMenu}</b>, 어떨까?
-          </Title>
+          </ReviewTitle>
           <ReviewScrollView>
             {selectedReview.reviews.map((review) => (
               <Review key={review.id}>
