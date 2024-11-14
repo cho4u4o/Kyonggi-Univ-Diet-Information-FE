@@ -9,7 +9,6 @@ import {
   MdOutlineMenuBook,
 } from 'react-icons/md';
 import styled from '@emotion/styled';
-import dormMenus from '../datas/dormMenus.json';
 import reviews from '../datas/reviews.json';
 import { useEffect } from 'react';
 import { fetchData } from '../utils/fetchData';
