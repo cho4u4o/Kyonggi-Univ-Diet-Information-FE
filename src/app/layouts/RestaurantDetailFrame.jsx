@@ -2,7 +2,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import styled from '@emotion/styled';
 import rice from '../assets/rice.svg';
 import { useSelectedRestaurantStore } from '../stores/useSelectedRestaurantStore';
-import InnerTitlesWrapper from '../components/InnerTitlesWrapper';
+import InnerTitlesWrapper from '../widgets/InnerTitlesWrapper';
 import restaurantInfo from '../datas/restaurantInfo.json';
 import { Selector, SelectorButton } from '../components/SelectorComponents';
 

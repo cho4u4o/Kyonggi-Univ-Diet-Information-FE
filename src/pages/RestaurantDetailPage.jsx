@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import MenuGridView from './MenuGridView';
-import { InnerContentCard } from './InnerContentComponents';
+import MenuGridView from '../features/menu/MenuGridView';
+import { InnerContentCard } from '../widgets/InnerContentComponents';
 
 export default function RestaurantDetailPage({}) {
   const [mode, setMode] = useState(0);

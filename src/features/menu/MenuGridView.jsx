@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import menuData from '../datas/menus.json';
+import menuData from '../../datas/menus.json';
 
 export default function MenuGridView({ id }) {
   const menus = menuData.Menus;

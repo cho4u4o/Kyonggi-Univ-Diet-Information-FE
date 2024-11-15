@@ -14,12 +14,15 @@ import { useEffect } from 'react';
 import {
   InnerContentCard,
   InnerContentWrapper,
-} from './InnerContentComponents';
+} from '../widgets/InnerContentComponents';
 import { fetchData } from '../utils/fetchData';
-import { requests } from '../apis/requests';
+import { requests } from '../shared/apis/requests';
 import { getTodayDate } from '../utils/getTodayDate';
 import { setDormMenuData } from '../utils/setDormMenuData';
-import { Selector, SelectorButton } from './SelectorComponents';
+import {
+  Selector,
+  SelectorButton,
+} from '../features/restaurant/SelectorComponents';
 
 export default function MenuCardSection() {
   const [clicked, setClicked] = useState(1);
