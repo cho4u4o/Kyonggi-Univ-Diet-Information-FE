@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom'
-import Header from '../containers/Header'
+import { Outlet } from 'react-router-dom';
+import Header from '../widgets/Header';
 
 export default function AppFrame() {
   return (
@@ -7,5 +7,5 @@ export default function AppFrame() {
       <Header />
       <Outlet />
     </>
-  )
+  );
 }
