@@ -11,10 +11,15 @@ import {
 import styled from '@emotion/styled';
 import reviews from '../datas/reviews.json';
 import { useEffect } from 'react';
+import {
+  InnerContentCard,
+  InnerContentWrapper,
+} from './InnerContentComponents';
 import { fetchData } from '../utils/fetchData';
 import { requests } from '../apis/requests';
 import { getTodayDate } from '../utils/getTodayDate';
 import { setDormMenuData } from '../utils/setDormMenuData';
+import { Selector, SelectorButton } from './SelectorComponents';
 
 export default function MenuCardSection() {
   const [clicked, setClicked] = useState(1);
@@ -35,8 +40,8 @@ export default function MenuCardSection() {
   const labels = ['BREAKFAST', 'LUNCH', 'DINNER'];
 
   return (
-    <MenuCardContainer>
-      <MenuSelector>
+    <InnerContentWrapper>
+      <Selector marginDirection="margin-right">
         {Array.from({ length: 3 }).map((_, index) => {
           const labelsKR = ['아침', '점심', '저녁'];
           const icons = [
@@ -45,7 +50,7 @@ export default function MenuCardSection() {
             <MdDinnerDining size={20} />,
           ];
           return (
-            <MenuSelectorBtn
+            <SelectorButton
               key={index}
               onClick={() => {
                 setClicked(index);
@@ -53,16 +58,20 @@ export default function MenuCardSection() {
               }}
               isSelected={clicked === index}
               marginright={index === 2 ? 0 : 10}
+              height={140}
             >
               <Icons> {icons[index]}</Icons>
               {labelsKR[index]}
-            </MenuSelectorBtn>
+            </SelectorButton>
           );
         })}
-      </MenuSelector>
-      <MenuCard>
+      </Selector>
+      <InnerContentCard>
         <MenuDiv>
-          {clicked === 0 ? (
+          {getTodayDate('weekday') === '일' ||
+          getTodayDate('weekday') === '토' ? (
+            <Text color="#000">주말에는 운영하지 않습니다.</Text>
+          ) : clicked === 0 ? (
             <Text color="#000">미운영</Text>
           ) : !menuItems ? (
             <Text color="#ccc">로딩중</Text>
@@ -85,48 +94,10 @@ export default function MenuCardSection() {
         <MenuReviewDiv>
           <MenuReview selectedMenu={selectedMenu} menuReviews={menuReviews} />
         </MenuReviewDiv>
-      </MenuCard>
-    </MenuCardContainer>
+      </InnerContentCard>
+    </InnerContentWrapper>
   );
 }
-
-const MenuCardContainer = styled.div`
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  margin: 10px 0;
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-  }
-`;
-
-const MenuCard = styled.div`
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
-  width: 80vw;
-  height: 60vh;
-  border: none;
-  border-radius: 30px;
-  background-color: #fff;
-  padding: 20px;
-
-  @media (max-width: 480px) {
-    align-items: start;
-    border-radius: 15px;
-    border: none;
-    width: 85vw;
-    height: 400px;
-  }
-  @media (max-width: 390px) {
-    height: 370px;
-  }
-`;
 
 const MenuDiv = styled.div`
   margin: 0 auto;
@@ -138,56 +109,6 @@ const MenuDiv = styled.div`
     padding: 0;
     text-align: start;
     margin: 0;
-  }
-`;
-
-const MenuSelector = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 60vh;
-  border: none;
-  border-radius: 15px;
-  background-color: #fff;
-  margin-right: 20px;
-
-  @media (max-width: 480px) {
-    background-color: transparent;
-    border: none;
-    width: 80vw;
-    height: 32px;
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    margin-bottom: 10px;
-  }
-`;
-
-const MenuSelectorBtn = styled.button`
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  border: none;
-  background-color: ${(props) => (props.isSelected ? '#00abaa' : '#fff')};
-  color: ${(props) => (props.isSelected ? '#fff' : '#ccc')};
-  cursor: pointer;
-  height: 140px;
-  width: 80px;
-  font-size: 16px;
-  font-family: Pretendard;
-  transition:
-    background-color 0.3s ease,
-    background-position 0.3s ease;
-
-  @media (max-width: 480px) {
-    width: 16vw;
-    height: 32px;
-    font-size: 15px;
-    border-radius: 15px;
-    margin-right: ${(props) => props.marginright}px;
   }
 `;
 
