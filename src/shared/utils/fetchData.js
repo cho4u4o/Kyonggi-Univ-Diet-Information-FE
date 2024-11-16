@@ -1,4 +1,4 @@
-import axios from '../apis/axios';
+import { axios } from '../apis';
 
 export const fetchData = async (request) => {
   try {

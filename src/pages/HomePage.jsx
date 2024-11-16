@@ -1,22 +1,21 @@
 import styled from '@emotion/styled';
-import rice from '../assets/rice.svg';
-import kiryong from '../assets/kiryong-notice.svg';
+import { NoticeImg, RiceImg } from '../shared/assets';
+import { getTodayDate } from '../shared/utils';
+import { InnerTitlesWrapper } from '../widgets/';
 import MenuCardSection from './MenuCardSection';
-import { getTodayDate } from '../utils/getTodayDate';
-import InnerTitlesWrapper from '../widgets/InnerTitlesWrapper';
 
 export default function Home() {
   return (
     <Content>
       <InnerTitlesWrapper
-        logo={rice}
+        logo={RiceImg}
         title="오늘의 드림타워 식단"
         subtitle={getTodayDate('all')}
         theme="black"
       />
       <MenuCardSection />
       <FloatingCircle>
-        <Logo src={kiryong} />
+        <Logo src={NoticeImg} />
       </FloatingCircle>
     </Content>
   );

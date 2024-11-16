@@ -1,11 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from '../pages/HomePage.jsx';
-import AppFrame from '../layouts/AppFrame.jsx';
-import RestaurantDetailPage from '../pages/RestaurantDetailPage.jsx';
-import RestaurantDetailFrame from '../layouts/RestaurantDetailFrame.jsx';
-import ErrorPage from '../pages/ErrorPage.jsx';
+import { HomePage, ErrorPage, RestaurantDetailPage } from '../pages';
+import { AppFrame, RestaurantDetailFrame } from './layouts';
 
 const router = createBrowserRouter([
   {

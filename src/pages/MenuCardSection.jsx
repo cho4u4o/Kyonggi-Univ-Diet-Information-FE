@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import styled from '@emotion/styled';
 import { FaStar } from 'react-icons/fa';
 import { IoMdThumbsUp } from 'react-icons/io';
-import { MdOutlineThumbUp } from 'react-icons/md';
 import {
+  MdOutlineThumbUp,
   MdFreeBreakfast,
   MdLunchDining,
   MdDinnerDining,
   MdOutlineMenuBook,
 } from 'react-icons/md';
-import styled from '@emotion/styled';
-import reviews from '../datas/reviews.json';
+import { reviews } from '../shared/datas';
 import { useEffect } from 'react';
 import {
   InnerContentCard,
   InnerContentWrapper,
-} from '../widgets/InnerContentComponents';
-import { fetchData } from '../utils/fetchData';
-import { requests } from '../shared/apis/requests';
-import { getTodayDate } from '../utils/getTodayDate';
-import { setDormMenuData } from '../utils/setDormMenuData';
-import {
   Selector,
   SelectorButton,
-} from '../features/restaurant/SelectorComponents';
+} from '../widgets';
+import { fetchData, getTodayDate, setDormMenuData } from '../shared/utils';
+import { requests } from '../shared/apis';
 
 export default function MenuCardSection() {
   const [clicked, setClicked] = useState(1);

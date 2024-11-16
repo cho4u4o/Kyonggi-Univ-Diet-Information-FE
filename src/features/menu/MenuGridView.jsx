@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
-import menuData from '../../datas/menus.json';
+import { menus } from '../../shared/datas';
 
 export default function MenuGridView({ id }) {
-  const menus = menuData.Menus;
+  const menuData = menus.Menus;
   return (
     <MenuContainer>
-      {menus[id] ? (
+      {menuData[id] ? (
         <MenuGrid>
-          {menus[id]['쌀국수'].map((menu, index) => (
+          {menuData[id]['쌀국수'].map((menu, index) => (
             <MenuItem key={index}>
               <MenuImage url={menu.url} />
               <MenuTitle>{menu.menu}</MenuTitle>

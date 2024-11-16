@@ -1,10 +1,9 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
-import rice from '../assets/rice.svg';
-import { useSelectedRestaurantStore } from '../stores/useSelectedRestaurantStore';
-import InnerTitlesWrapper from '../widgets/InnerTitlesWrapper';
-import restaurantInfo from '../datas/restaurantInfo.json';
-import { Selector, SelectorButton } from '../components/SelectorComponents';
+import { RiceImg } from '../../shared/assets';
+import { useSelectedRestaurantStore } from '../../shared/stores';
+import { InnerTitlesWrapper, Selector, SelectorButton } from '../../widgets';
+import { restaurantInfo } from '../../shared/datas';
 
 export default function RestaurantDetailFrame() {
   const { selectedRest, setSelectedRest } = useSelectedRestaurantStore();
@@ -20,7 +19,7 @@ export default function RestaurantDetailFrame() {
   return (
     <Body>
       <InnerTitlesWrapper
-        logo={rice}
+        logo={RiceImg}
         title={restaurantList[selectedRest]}
         subtitle={restaurantOpenhr[selectedRest]}
       />

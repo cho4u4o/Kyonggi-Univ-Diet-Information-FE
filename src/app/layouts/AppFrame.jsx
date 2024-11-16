@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../widgets/Header';
+import { Header } from '../../widgets';
 
 export default function AppFrame() {
   return (
