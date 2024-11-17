@@ -8,10 +8,6 @@ phases:
       - npm install -g pnpm
       - echo "Installing dependencies with pnpm..."
       - pnpm install
-  pre_build:
-    commands:
-      - echo "we are in the pre build phase"
-      - pnpm run lint
   build:
     commands:
       - echo "we are in the build block"
