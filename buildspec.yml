@@ -5,7 +5,8 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
-      - echo "installing something"
+      - npm install -g pnpm
+      - echo "Installing dependencies with pnpm..."
       - pnpm install
   pre_build:
     commands:
