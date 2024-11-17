@@ -13,3 +13,7 @@ phases:
       - echo "we are in the build block"
       - echo "we will run some tests"
       - pnpm run build
+
+artifacts:
+  files:
+    - '**/*'
