@@ -18,7 +18,7 @@ const ContentHeader = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   margin: 0;
-  width: calc(80vw + 100px);
+  width: 100%;
   @media (max-width: 480px) {
     justify-content: center;
   }
