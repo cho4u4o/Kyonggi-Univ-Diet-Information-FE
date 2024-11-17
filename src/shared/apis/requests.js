@@ -1,4 +1,4 @@
 export const requests = {
   fetchDormMenu: '/api/diet-content/dormitory',
-  fetchKakaoLogin: `/api/kakao-login?code=`,
+  fetchKakaoLogin: '/api/kakao-login?code=',
 };
