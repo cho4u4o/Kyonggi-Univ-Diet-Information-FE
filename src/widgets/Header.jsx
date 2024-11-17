@@ -31,8 +31,11 @@ export default function Header() {
           <StyledNavLink txtcolor={getTxtColor()} to="restaurant">
             교내식당
           </StyledNavLink>
-          <StyledNavLink txtcolor={getTxtColor()} to="abc">
+          {/* <StyledNavLink txtcolor={getTxtColor()} to="abc">
             개발자들
+          </StyledNavLink> */}
+          <StyledNavLink txtcolor={getTxtColor()} to="login">
+            로그인
           </StyledNavLink>
         </MenuBar>
       </HeaderDiv>
