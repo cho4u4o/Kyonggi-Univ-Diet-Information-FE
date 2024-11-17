@@ -1,7 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage, ErrorPage, RestaurantDetailPage, LoginPage } from '../pages';
+import {
+  HomePage,
+  ErrorPage,
+  RestaurantDetailPage,
+  LoginPage,
+  AuthPage,
+} from '../pages';
 import { AppFrame, RestaurantDetailFrame } from './layouts';
 
 const router = createBrowserRouter([
@@ -19,6 +25,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: 'oauth', element: <AuthPage /> },
   { path: '*', element: <ErrorPage /> },
 ]);
 
