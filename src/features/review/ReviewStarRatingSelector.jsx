@@ -1,9 +1,9 @@
-import React from 'react'
-import { FaStar } from 'react-icons/fa'
+import React from 'react';
+import { FaStar } from 'react-icons/fa';
 
 function StarRatingSelector({ totalstars = 5 }) {
-  const [selectedStars, setSelectedStars] = React.useState(3)
-  const createArray = (totalStars) => Array.from({ length: totalStars })
+  const [selectedStars, setSelectedStars] = React.useState(3);
+  const createArray = (totalStars) => Array.from({ length: totalStars });
 
   const Star = ({ selected = false, index }) => (
     <>
@@ -12,7 +12,7 @@ function StarRatingSelector({ totalstars = 5 }) {
         color={selected ? '#00abaa' : 'grey'}
       />
     </>
-  )
+  );
 
   return (
     <div className="star-rating-selector">
@@ -20,7 +20,7 @@ function StarRatingSelector({ totalstars = 5 }) {
         <Star key={i} index={i} selected={selectedStars > i} />
       ))}
     </div>
-  )
+  );
 }
 
-export default StarRatingSelector
+export default StarRatingSelector;
