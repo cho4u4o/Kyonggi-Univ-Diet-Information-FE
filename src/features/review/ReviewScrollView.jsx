@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { MdOutlineMenuBook } from 'react-icons/md';
-import { reviews, useSelectedDormMenuStore } from '../../../shared';
+import { reviews, useSelectedDormMenuStore } from '../../shared';
 import ReviewItem from './ReviewItem';
 
 export default function ReviewScrollView() {
