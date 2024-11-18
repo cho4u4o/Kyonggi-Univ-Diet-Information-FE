@@ -6,7 +6,8 @@ export const SelectorButton = styled.button`
   display: flex;
   flex-direction: column;
   border: none;
-  background-color: ${(props) => (props.isSelected ? '#00abaa' : '#fff')};
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? '#00abaa' : theme === 'black' ? '#444' : '#fff'};
   color: ${(props) => (props.isSelected ? '#fff' : '#ccc')};
   cursor: pointer;
   height: ${({ height }) => height}px;

@@ -25,13 +25,14 @@ export default function RestaurantDetailFrame() {
       />
       <MenuSelectorWrapper>
         <Outlet />
-        <Selector marginDirection="margin-left">
+        <Selector marginDirection="margin-left" theme="black">
           {restaurantList.map((restaurant, index) => (
             <SelectorButton
               key={index}
               isSelected={index === selectedRest}
               onClick={() => setSelectedRest(index)}
               height={90}
+              theme="black"
             >
               {restaurant}
             </SelectorButton>

@@ -9,7 +9,7 @@ export const Selector = styled.div`
   height: 60vh;
   border: none;
   border-radius: 15px;
-  background-color: #fff;
+  background-color: ${({ theme }) => (theme === 'black' ? '#444' : '#fff')};
   ${({ marginDirection }) => marginDirection}: 20px;
 
   @media (max-width: 480px) {
