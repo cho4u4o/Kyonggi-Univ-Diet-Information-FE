@@ -12,7 +12,7 @@ export default function LoginPage() {
         <KakaoLoginButton
           onClick={() => {
             window.location.href =
-              'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=54224d1f38c3221ad57c32ef7455aff1&redirect_uri=http://localhost:5173/oauth';
+              'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=54224d1f38c3221ad57c32ef7455aff1&redirect_uri=https://api.kiryong.site/api/kakao-login';
           }}
         >
           <Symbol src={Kakao} />
