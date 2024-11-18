@@ -1,8 +1,16 @@
 import styled from '@emotion/styled';
-import { NoticeImg, RiceImg } from '../shared/assets';
-import { getTodayDate } from '../shared/utils';
-import { InnerTitlesWrapper } from '../widgets/';
-import MenuCardSection from './MenuCardSection';
+import {
+  InnerContentCard,
+  InnerContentWrapper,
+  InnerTitlesWrapper,
+  Selector,
+} from '../widgets';
+import { NoticeImg, RiceImg, getTodayDate } from '../shared';
+import {
+  MenuListView,
+  MenuTimeSelectorButton,
+  ReviewScrollView,
+} from '../features';
 
 export default function Home() {
   return (
@@ -13,7 +21,15 @@ export default function Home() {
         subtitle={getTodayDate('all')}
         theme="black"
       />
-      <MenuCardSection />
+      <InnerContentWrapper>
+        <Selector marginDirection="margin-right">
+          <MenuTimeSelectorButton />
+        </Selector>
+        <InnerContentCard>
+          <MenuListView />
+          <ReviewScrollView />
+        </InnerContentCard>
+      </InnerContentWrapper>
       <FloatingCircle>
         <Logo src={NoticeImg} />
       </FloatingCircle>

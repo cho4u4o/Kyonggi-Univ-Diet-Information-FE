@@ -1,50 +1,58 @@
-export default function ReviewItem({ rating, comment }) {
+import styled from '@emotion/styled';
+import { FaStar } from 'react-icons/fa';
+import { MdOutlineThumbUp } from 'react-icons/md';
+
+export default function ReviewItem({ review }) {
   return (
-    <>
-      <ReviewContainer>
-        <ReviewDate>2024.09.09</ReviewDate>
-        <ReviewWriter>정**</ReviewWriter>
-        <ReviewContent>{comment}</ReviewContent>
-        <ReviewStar>{'★'.repeat(rating)}</ReviewStar>
-      </ReviewContainer>
-      <Divider />
-    </>
+    <Review>
+      <ReviewInfo>
+        <span>
+          {review.memberName}{' '}
+          <span style={{ fontSize: '12px', fontWeight: 500 }}>2024-11-08</span>
+        </span>
+        <span>
+          <span>
+            {Array.from({ length: review.rating }).map((_, index) => (
+              <FaStar size={12} key={index} />
+            ))}
+          </span>
+          <LikeBtn>
+            <MdOutlineThumbUp />
+            {/* <IoMdThumbsUp /> */}
+          </LikeBtn>
+        </span>
+      </ReviewInfo>
+      {review.content}
+    </Review>
   );
 }
 
-const ReviewContainer = styled.div`
-  height: 60px;
-  padding: 10px 10px;
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 1fr 1fr;
+const Review = styled.div`
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 0px;
+  font-family: Pretendard;
+  font-size: 15px;
+  line-height: 1.5em;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 8px;
 `;
-const ReviewDate = styled.span`
-  font-family: 'Pretendard';
-  font-size: 10px;
-  grid-column: 1;
-  grid-row: 2;
-`;
-const ReviewWriter = styled.span`
-  font-family: 'Pretendard';
-  grid-column: 1;
-  grid-row: 1;
-`;
-const ReviewContent = styled.span`
-  font-family: 'Pretendard';
-  font-weight: light;
-  grid-column: 2;
-  grid-row: span 2 / span 2;
-`;
-const ReviewStar = styled.span`
-  grid-column: 3;
-  grid-row: span 2 / span 2;
+const ReviewInfo = styled.div`
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  color: #000;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
-const Divider = styled.hr`
-  border: 0.8px solid #e0e0e0;
-  margin-top: 0.75rem;
+const LikeBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 4px;
 `;
