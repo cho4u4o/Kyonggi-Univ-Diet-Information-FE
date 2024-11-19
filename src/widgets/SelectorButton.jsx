@@ -6,7 +6,8 @@ export const SelectorButton = styled.button`
   display: flex;
   flex-direction: column;
   border: none;
-  background-color: ${(props) => (props.isSelected ? '#00abaa' : '#fff')};
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? '#00abaa' : theme === 'black' ? '#444' : '#fff'};
   color: ${(props) => (props.isSelected ? '#fff' : '#ccc')};
   cursor: pointer;
   height: ${({ height }) => height}px;
@@ -20,7 +21,7 @@ export const SelectorButton = styled.button`
   @media (max-width: 480px) {
     width: 16vw;
     height: 32px;
-    font-size: 15px;
+    font-size: ${({ theme }) => (theme === 'black' ? '11px' : '15px')};
     border-radius: 15px;
     margin-right: ${(props) => props.marginright}px;
   }

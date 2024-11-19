@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-import { fetchData, Kakao, requests } from '../shared';
+import { Kakao } from '../shared';
 import { InnerContentCard } from '../widgets';
-import { useState } from 'react';
 
 export default function LoginPage() {
-  const [token, setToken] = useState(null);
   return (
     <LoginContainer>
       <LoginWrapper>
@@ -14,7 +12,7 @@ export default function LoginPage() {
         <KakaoLoginButton
           onClick={() => {
             window.location.href =
-              'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=54224d1f38c3221ad57c32ef7455aff1&redirect_uri=https://kiryong.site/oauth';
+              'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=54224d1f38c3221ad57c32ef7455aff1&redirect_uri=https://api.kiryong.site/api/kakao-login';
           }}
         >
           <Symbol src={Kakao} />

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import MenuGridView from '../features/menu/MenuGridView';
+import { MenuGridView, ReviewScrollView } from '../features';
 import { InnerContentCard } from '../widgets';
 
-export default function RestaurantDetailPage({}) {
+export default function RestaurantDetailPage({ restaurant }) {
   const [mode, setMode] = useState(0);
   const divMode = ['메뉴', '리뷰'];
 
   return (
-    <InnerContentCard theme="black">
+    <InnerContentCard theme="black" flexDirection="column">
       <MenuReviewToggleWrapper>
         <MenuReviewToggleButton>
           {[0, 1].map((id) => (
@@ -22,10 +22,23 @@ export default function RestaurantDetailPage({}) {
           ))}
         </MenuReviewToggleButton>
       </MenuReviewToggleWrapper>
-      {mode === 0 ? <MenuGridView /> : <ReviewScrollView />}
+      {mode === 0 ? (
+        <MenuGridView id="경슐랭" />
+      ) : (
+        <RestaurantReview>리뷰가 없습니다.</RestaurantReview>
+      )}
     </InnerContentCard>
   );
 }
+
+const RestaurantReview = styled.div`
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font: 20px/1.5em Pretendard;
+  color: white;
+`;
 
 const MenuReviewToggleButton = styled.div`
   width: 86px;
@@ -45,6 +58,10 @@ const MenuReviewToggleWrapper = styled.div`
   height: 30px;
   width: 100%;
   margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 0px;
+  }
 `;
 const MenuReviewToggleContent = styled.button`
   width: 40px;
@@ -52,12 +69,6 @@ const MenuReviewToggleContent = styled.button`
   background-color: ${({ isSelected }) => (isSelected ? '#444' : '#333')};
   color: ${({ isSelected }) => (isSelected ? '#fff' : '#aaa')};
   font: 500 12px/1.5 Pretendard;
-
   border: none;
   border-radius: 2px;
-`;
-
-const ReviewScrollView = styled.div`
-  overflow: scroll;
-  height: 44vh;
 `;
