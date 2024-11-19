@@ -21,5 +21,6 @@ export const Selector = styled.div`
     flex-direction: row;
     margin: 0;
     margin-bottom: 10px;
+    order: 0;
   }
 `;

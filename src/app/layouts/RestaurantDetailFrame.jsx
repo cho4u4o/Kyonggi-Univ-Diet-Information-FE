@@ -33,6 +33,7 @@ export default function RestaurantDetailFrame() {
               onClick={() => setSelectedRest(index)}
               height={90}
               theme="black"
+              marginright={index === 4 ? 0 : 10}
             >
               {restaurant}
             </SelectorButton>

@@ -21,7 +21,7 @@ export const SelectorButton = styled.button`
   @media (max-width: 480px) {
     width: 16vw;
     height: 32px;
-    font-size: 15px;
+    font-size: ${({ theme }) => (theme === 'black' ? '11px' : '15px')};
     border-radius: 15px;
     margin-right: ${(props) => props.marginright}px;
   }
