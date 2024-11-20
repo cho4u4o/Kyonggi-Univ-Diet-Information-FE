@@ -16,7 +16,7 @@ export default function InnerTitlesWrapper({ logo, title, subtitle, theme }) {
 }
 
 const TitleContainer = styled.div`
-  width: 75%;
+  width: 90%;
   display: flex;
   @media (max-width: 480px) {
     width: fit-content;
@@ -62,9 +62,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.p`
-  font-family: Pretendard;
-  font-size: 40px;
-  font-weight: 600;
+  font: 700 40px Pretendard;
   margin: 0;
   @media (max-width: 480px) {
     font-size: 22px;
