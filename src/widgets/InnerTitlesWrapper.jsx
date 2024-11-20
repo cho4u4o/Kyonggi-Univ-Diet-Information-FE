@@ -16,7 +16,7 @@ export default function InnerTitlesWrapper({ logo, title, subtitle, theme }) {
 }
 
 const TitleContainer = styled.div`
-  width: 80%;
+  width: 75%;
   display: flex;
   @media (max-width: 480px) {
     width: fit-content;
