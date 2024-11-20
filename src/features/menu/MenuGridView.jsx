@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { menus } from '../../shared/datas';
+import MenuItem from './MenuItem';
 
 export default function MenuGridView({ id }) {
   const menuData = menus.Menus;
@@ -8,11 +9,7 @@ export default function MenuGridView({ id }) {
       {menuData[id] ? (
         <MenuGrid>
           {menuData[id]['쌀국수'].map((menu, index) => (
-            <MenuItem key={index}>
-              <MenuImage url={menu.url} />
-              <MenuTitle>{menu.menu}</MenuTitle>
-              <MenuTitle>{menu.price.toLocaleString()}원</MenuTitle>
-            </MenuItem>
+            <MenuItem key={index} menu={menu} />
           ))}
         </MenuGrid>
       ) : (
@@ -38,34 +35,6 @@ const MenuGrid = styled.main`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   width: 100%;
-`;
-
-const MenuItem = styled.div`
-  background-color: transparent;
-  border-radius: 15px;
-  padding: 10px;
-  transition:
-    transform 0.3s,
-    border 0.2s ease-in-out;
-  height: 200px;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const MenuImage = styled.div`
-  background-image: url(${(props) => props.url});
-  background-size: cover;
-  margin-bottom: 10px;
-  height: 80%;
-  border-radius: 10px;
-`;
-
-const MenuTitle = styled.p`
-  font: 600 18px/1.5 Pretendard;
-  margin: 0;
-  color: white;
 `;
 
 const NoMenu = styled.div`

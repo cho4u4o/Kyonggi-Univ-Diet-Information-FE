@@ -27,6 +27,7 @@ export default function MenuListView() {
   }, []);
 
   const labels = ['BREAKFAST', 'LUNCH', 'DINNER'];
+  const runningTimes = ['', '11:00 ~ 13:30', '17:00 ~ 19:00'];
 
   return (
     <MenuDiv>
@@ -39,6 +40,7 @@ export default function MenuListView() {
         <Text color="#ccc">로딩중</Text>
       ) : (
         <>
+          <RunningTime>운영시간 {runningTimes[clicked]}</RunningTime>
           {todayMenu[labels[clicked]].menus.map((menu) => (
             <Menu
               key={menu.id}
@@ -55,6 +57,16 @@ export default function MenuListView() {
     </MenuDiv>
   );
 }
+
+const RunningTime = styled.p`
+  font: 500 15px Pretendard;
+  color: #00abaa;
+  margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
+`;
 
 const MenuDiv = styled.div`
   margin: 0 auto;
@@ -80,6 +92,10 @@ const Menu = styled.p`
 
   &:hover {
     color: #00abaa;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
   }
 
   @media (max-width: 480px) {

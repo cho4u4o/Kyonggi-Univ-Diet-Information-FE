@@ -4,19 +4,29 @@ import styled from '@emotion/styled';
 export default function InnerTitlesWrapper({ logo, title, subtitle, theme }) {
   return (
     <ContentHeader>
-      <Logo src={logo} />
-      <TitleWrapper theme={theme}>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-      </TitleWrapper>
+      <TitleContainer>
+        <Logo src={logo} />
+        <TitleWrapper theme={theme}>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
+        </TitleWrapper>
+      </TitleContainer>
     </ContentHeader>
   );
 }
 
+const TitleContainer = styled.div`
+  width: 90%;
+  display: flex;
+  @media (max-width: 480px) {
+    width: fit-content;
+  }
+`;
+
 const ContentHeader = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   margin: 0;
   width: 100%;
   @media (max-width: 480px) {
@@ -52,9 +62,7 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.p`
-  font-family: Pretendard;
-  font-size: 40px;
-  font-weight: 600;
+  font: 700 40px Pretendard;
   margin: 0;
   @media (max-width: 480px) {
     font-size: 22px;

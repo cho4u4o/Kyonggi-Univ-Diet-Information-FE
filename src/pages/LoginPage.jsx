@@ -11,8 +11,7 @@ export default function LoginPage() {
         </Description>
         <KakaoLoginButton
           onClick={() => {
-            window.location.href =
-              'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=54224d1f38c3221ad57c32ef7455aff1&redirect_uri=https://api.kiryong.site/api/kakao-login';
+            window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${import.meta.env.VITE_KAKAO_REST_API_KEY}&redirect_uri=${import.meta.env.VITE_REDIRECT_URL}`;
           }}
         >
           <Symbol src={Kakao} />
@@ -28,7 +27,6 @@ const LoginWrapper = styled(InnerContentCard)`
   justify-content: center;
   width: 60vw;
   height: 50%;
-  backdrop-filter: blur(30px);
   box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
   border: 2px solid rgba(255, 255, 255, 0.18);
   background-color: rgba(255, 255, 255, 0.5);
