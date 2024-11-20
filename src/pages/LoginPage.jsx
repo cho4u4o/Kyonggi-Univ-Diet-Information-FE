@@ -27,7 +27,6 @@ const LoginWrapper = styled(InnerContentCard)`
   justify-content: center;
   width: 60vw;
   height: 50%;
-  backdrop-filter: blur(30px);
   box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
   border: 2px solid rgba(255, 255, 255, 0.18);
   background-color: rgba(255, 255, 255, 0.5);
