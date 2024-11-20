@@ -71,4 +71,8 @@ const MenuReviewToggleContent = styled.button`
   font: 500 12px/1.5 Pretendard;
   border: none;
   border-radius: 2px;
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
 `;
