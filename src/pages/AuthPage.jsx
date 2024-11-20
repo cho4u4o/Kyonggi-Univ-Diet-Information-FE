@@ -1,19 +1,35 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getAccessToken } from '../shared/apis/axios';
+import { fetchKakao } from '../shared/apis/axios';
 
 export default function AuthPage() {
   const location = useLocation();
   const [code, setCode] = useState();
   const [token, setToken] = useState();
+  const [email, setEmail] = useState();
 
   useEffect(() => {
-    const code = location['search'].split('?code=')[1];
-    getAccessToken(code).then((response) => setToken(response));
-    setCode(code);
+    if (!token) {
+      const code = location.search.split('?code=')[1];
+      fetchKakao(code).then((response) => {
+        setToken(response.token);
+        setEmail(response.email);
+        setCode(code);
+      });
+    }
   }, []);
 
-  console.log(code, token);
-
-  return <div>AuthPage</div>;
+  return (
+    <>
+      {token && (
+        <div>
+          성공
+          <br />
+          <p> code: ${code}</p>
+          <p> token: ${token}</p>
+          <p> email: ${email}</p>
+        </div>
+      )}
+    </>
+  );
 }
