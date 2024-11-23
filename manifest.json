@@ -1,7 +1,10 @@
 {
   "short_name": "기밥",
   "name": "기룡아 밥먹자",
-  "icon": [
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f4f4",
+  "icons": [
     {
       "src": "./icons/icon-96.png",
       "sizes": "96x96",
@@ -68,8 +71,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#f4f4f4"
+  ]
 }
