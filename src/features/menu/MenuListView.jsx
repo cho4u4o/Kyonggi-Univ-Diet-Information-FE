@@ -30,51 +30,50 @@ export default function MenuListView() {
   const labels = ['BREAKFAST', 'LUNCH', 'DINNER'];
   const runningTimes = ['', '11:00 ~ 13:30', '17:00 ~ 19:00'];
 
-  return (
-    <MenuDiv>
-      {getTodayDate('weekday') === 'SUNDAY' ||
-      getTodayDate('weekday') === 'SATURDAY' ? (
-        <Text color="#000">주말에는 운영하지 않습니다.</Text>
-      ) : clicked === 0 ? (
-        <Text color="#000">미운영</Text>
-      ) : !todayMenu ? (
+  const renderContent = () => {
+    const weekday = getTodayDate('weekday');
+
+    if (['SATURDAY', 'SUNDAY'].includes(weekday)) {
+      return <Text color="#000">주말에는 운영하지 않습니다.</Text>;
+    }
+
+    if (clicked === 0) {
+      return <Text color="#000">미운영</Text>;
+    }
+
+    if (!todayMenu) {
+      return (
         <MenuListHeader>
           <Text color="#CCC">로딩중</Text>
-          <RefreshButton
-            onClick={() => {
-              window.location.reload();
-            }}
-          >
+          <RefreshButton onClick={() => window.location.reload()}>
             <IoMdRefresh size={18} />
           </RefreshButton>
         </MenuListHeader>
-      ) : (
-        <>
-          <MenuListHeader>
-            <RunningTime>운영시간 {runningTimes[clicked]}</RunningTime>
-            <RefreshButton
-              onClick={() => {
-                window.location.reload();
-              }}
-            >
-              <IoMdRefresh size={18} />
-            </RefreshButton>
-          </MenuListHeader>
-          {todayMenu[labels[clicked]].menus.map((menu) => (
-            <Menu
-              key={menu.id}
-              isSelected={selectedMenu === menu.menu}
-              onClick={() => {
-                setSelectedMenu(menu.menu);
-              }}
-            >
-              {menu.menu}
-            </Menu>
-          ))}
-        </>
-      )}
-    </MenuDiv>
-  );
+      );
+    }
+
+    return (
+      <>
+        <MenuListHeader>
+          <RunningTime>운영시간 {runningTimes[clicked]}</RunningTime>
+          <RefreshButton onClick={() => window.location.reload()}>
+            <IoMdRefresh size={18} />
+          </RefreshButton>
+        </MenuListHeader>
+        {todayMenu[labels[clicked]].menus.map(({ id, menu }) => (
+          <Menu
+            key={id}
+            isSelected={selectedMenu === menu}
+            onClick={() => setSelectedMenu(menu)}
+          >
+            {menu}
+          </Menu>
+        ))}
+      </>
+    );
+  };
+
+  return <MenuDiv>{renderContent()}</MenuDiv>;
 }
 
 const RefreshButton = styled.button`
