@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Selector = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
