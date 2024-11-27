@@ -39,6 +39,7 @@ export default function Header() {
               txtcolor={getTxtColor()}
               onClick={() => {
                 document.cookie = 'token=; max-age=0; path=/';
+                window.location.reload();
               }}
               to="/"
             >
