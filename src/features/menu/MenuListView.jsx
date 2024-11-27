@@ -61,11 +61,7 @@ export default function MenuListView() {
 const RunningTime = styled.p`
   font: 500 15px Pretendard;
   color: #00abaa;
-  margin-bottom: 10px;
-
-  @media (max-width: 768px) {
-    margin: 0;
-  }
+  margin: 0;
 `;
 
 const MenuDiv = styled.div`
