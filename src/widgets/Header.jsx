@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useLocation, NavLink, Link } from 'react-router-dom';
+import { getCookie } from '../shared';
 
 export default function Header() {
   const location = useLocation();
@@ -34,7 +35,7 @@ export default function Header() {
           {/* <StyledNavLink txtcolor={getTxtColor()} to="abc">
             개발자들
           </StyledNavLink> */}
-          {document.cookie ? (
+          {getCookie('token') ? (
             <StyledLink
               txtcolor={getTxtColor()}
               onClick={() => {

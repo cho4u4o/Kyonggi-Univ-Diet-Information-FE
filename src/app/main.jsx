@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: 'oauth', element: <AuthPage /> },
+  { path: '/oauth', element: <AuthPage /> },
   { path: '*', element: <ErrorPage /> },
 ]);
 
