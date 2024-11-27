@@ -17,6 +17,7 @@ export default function MenuListView() {
     setWeeklyMenu,
     selectedMenu,
     setSelectedMenu,
+    setSelectedMenuId,
   } = useSelectedDormMenuStore();
 
   useEffect(() => {
@@ -64,7 +65,10 @@ export default function MenuListView() {
           <Menu
             key={id}
             isSelected={selectedMenu === menu}
-            onClick={() => setSelectedMenu(menu)}
+            onClick={() => {
+              setSelectedMenu(menu);
+              setSelectedMenuId(id);
+            }}
           >
             {menu}
           </Menu>

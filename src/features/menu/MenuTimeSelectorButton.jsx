@@ -4,7 +4,8 @@ import { SelectorButton } from '../../widgets';
 import { useSelectedDormMenuStore } from '../../shared';
 
 export default function MenuTimeSelectorButton() {
-  const { clicked, setSelectedMenu, setClicked } = useSelectedDormMenuStore();
+  const { clicked, setSelectedMenu, setClicked, setSelectedMenuId } =
+    useSelectedDormMenuStore();
   return (
     <>
       {Array.from({ length: 3 }).map((_, index) => {
@@ -20,6 +21,7 @@ export default function MenuTimeSelectorButton() {
             onClick={() => {
               setClicked(index);
               setSelectedMenu(null);
+              setSelectedMenuId(null);
             }}
             isSelected={clicked === index}
             marginright={index === 2 ? 0 : 10}
