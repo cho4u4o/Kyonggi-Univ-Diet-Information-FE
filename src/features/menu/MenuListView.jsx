@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { IoMdRefresh } from 'react-icons/io';
 import { useEffect } from 'react';
 import {
   requests,
@@ -40,7 +41,16 @@ export default function MenuListView() {
         <Text color="#ccc">로딩중</Text>
       ) : (
         <>
-          <RunningTime>운영시간 {runningTimes[clicked]}</RunningTime>
+          <MenuListHeader>
+            <RunningTime>운영시간 {runningTimes[clicked]}</RunningTime>
+            <RefreshButton
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              <IoMdRefresh size={18} />
+            </RefreshButton>
+          </MenuListHeader>
           {todayMenu[labels[clicked]].menus.map((menu) => (
             <Menu
               key={menu.id}
@@ -58,14 +68,31 @@ export default function MenuListView() {
   );
 }
 
-const RunningTime = styled.p`
-  font: 500 15px Pretendard;
-  color: #00abaa;
-  margin-bottom: 10px;
+const RefreshButton = styled.button`
+  display: none;
+  @media (max-width: 480px) {
+    color: #000;
+    all: unset;
 
-  @media (max-width: 768px) {
-    margin: 0;
+    &:hover {
+      color: #00abaa;
+    }
   }
+`;
+
+const MenuListHeader = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font: 500 15px Pretendard;
+  margin: 0;
+  @media (max-width: 480px) {
+    justify-content: space-between;
+  }
+`;
+
+const RunningTime = styled.span`
+  color: #00abaa;
 `;
 
 const MenuDiv = styled.div`
@@ -78,6 +105,7 @@ const MenuDiv = styled.div`
     padding: 0;
     text-align: start;
     margin: 0;
+    width: 100%;
   }
 `;
 
