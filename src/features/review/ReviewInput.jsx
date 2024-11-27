@@ -1,18 +1,82 @@
 import styled from '@emotion/styled';
+import StarRatingSelector from './ReviewStarRatingSelector';
+import { getCookie } from '../../shared';
+import { Link } from 'react-router-dom';
 
-export default function Input() {
+export default function ReviewInput() {
+  const token = getCookie('token');
   return (
-    <InputContainer>
-      <Textarea />
-      <Button>완료</Button>
-    </InputContainer>
+    <>
+      {token ? (
+        <ReviewInputWrapper>
+          <InputContainer>
+            <Textarea />
+            <Button>완료</Button>
+          </InputContainer>
+        </ReviewInputWrapper>
+      ) : (
+        <ReviewInputWrapper>
+          <InputContainer style={{ position: 'relative' }}>
+            <div
+              style={{
+                borderRadius: '10px',
+                border: '0.5px solid #ccc',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backdropFilter: 'blur(3px)',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                zIndex: 1,
+                display: 'grid',
+                placeItems: 'center',
+              }}
+            >
+              <div style={{ display: 'grid', placeItems: 'center' }}>
+                <p style={{ fontSize: '15px', margin: 0, marginBottom: '6px' }}>
+                  로그인 후 후기를 작성하세요!
+                </p>
+                <LoginLink to="/login">로그인</LoginLink>
+              </div>
+            </div>
+
+            <Textarea />
+            <Button>완료</Button>
+          </InputContainer>
+        </ReviewInputWrapper>
+      )}
+    </>
   );
 }
+
+const ReviewInputWrapper = styled.div`
+  height: 80px;
+`;
+
+const LoginLink = styled(Link)`
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  line-height: 1.5;
+  padding: 4px 12px;
+  background-color: #fff;
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #00abaa;
+    color: #fff;
+  }
+`;
 
 const InputContainer = styled.div`
   width: 100%;
   height: 5rem;
-  margin: 1.25rem 0;
+  margin-bottom: 1rem;
   display: grid;
   grid-template-columns: 5fr 1fr;
   grid-template-rows: 1fr;
