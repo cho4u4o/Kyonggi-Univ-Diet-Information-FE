@@ -11,6 +11,7 @@ export const fetchKakao = async (code) => {
     });
     return response.data;
   } catch (error) {
+    console.log(error);
     console.error('Failed to get data:', error.response?.data || error.message);
   }
 };
