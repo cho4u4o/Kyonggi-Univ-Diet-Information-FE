@@ -38,7 +38,16 @@ export default function MenuListView() {
       ) : clicked === 0 ? (
         <Text color="#000">미운영</Text>
       ) : !todayMenu ? (
-        <Text color="#ccc">로딩중</Text>
+        <MenuListHeader>
+          <Text color="#CCC">로딩중</Text>
+          <RefreshButton
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            <IoMdRefresh size={18} />
+          </RefreshButton>
+        </MenuListHeader>
       ) : (
         <>
           <MenuListHeader>
@@ -83,6 +92,7 @@ const RefreshButton = styled.button`
 const MenuListHeader = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
   font: 500 15px Pretendard;
   margin: 0;
@@ -137,10 +147,10 @@ const Text = styled.p`
   font-size: 25px;
   font-weight: 500;
   margin: 0px;
-  padding-top: 12px;
   color: ${(props) => props.color};
 
   @media (max-width: 480px) {
     font-size: 15px;
+    padding-top: ${({ padding }) => (padding ? 0 : 8)}px;
   }
 `;
