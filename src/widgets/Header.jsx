@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, NavLink, Link } from 'react-router-dom';
 
 export default function Header() {
   const location = useLocation();
@@ -34,9 +34,22 @@ export default function Header() {
           {/* <StyledNavLink txtcolor={getTxtColor()} to="abc">
             개발자들
           </StyledNavLink> */}
-          <StyledNavLink txtcolor={getTxtColor()} to="login">
-            로그인
-          </StyledNavLink>
+          {document.cookie ? (
+            <StyledLink
+              txtcolor={getTxtColor()}
+              onClick={() => {
+                document.cookie = 'token=; max-age=0; path=/';
+                window.location.reload();
+              }}
+              to="/"
+            >
+              로그아웃
+            </StyledLink>
+          ) : (
+            <StyledNavLink txtcolor={getTxtColor()} to="login">
+              로그인
+            </StyledNavLink>
+          )}
         </MenuBar>
       </HeaderDiv>
     </>
@@ -75,6 +88,25 @@ const MenuBar = styled.div`
   align-items: center;
   justify-content: flex-end;
   margin: 0;
+`;
+const StyledLink = styled(Link)`
+  color: ${(props) => props.txtcolor};
+
+  text-decoration: none;
+  margin-left: 30px;
+
+  &.active {
+    color: #00abaa;
+  }
+
+  &:hover {
+    color: #00abaa;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 10px;
+    font-size: 12px;
+  }
 `;
 const StyledNavLink = styled(NavLink)`
   color: ${(props) => props.txtcolor};
