@@ -2,10 +2,19 @@ import { useState } from 'react';
 import styled from '@emotion/styled';
 import { MenuGridView, ReviewScrollView } from '../features';
 import { InnerContentCard } from '../widgets';
+import { useSelectedRestaurantStore } from '../shared';
 
 export default function RestaurantDetailPage({ restaurant }) {
+  const { selectedRest } = useSelectedRestaurantStore();
   const [mode, setMode] = useState(0);
   const divMode = ['메뉴', '리뷰'];
+  const restaurants = [
+    '경슐랭',
+    '이스퀘어',
+    '감성코어',
+    '오아시스',
+    '샐리박스',
+  ];
 
   return (
     <InnerContentCard theme="black" flexDirection="column">
@@ -23,9 +32,9 @@ export default function RestaurantDetailPage({ restaurant }) {
         </MenuReviewToggleButton>
       </MenuReviewToggleWrapper>
       {mode === 0 ? (
-        <MenuGridView id="경슐랭" />
+        <MenuGridView id={restaurants[selectedRest]} />
       ) : (
-        <RestaurantReview>리뷰가 없습니다.</RestaurantReview>
+        <RestaurantReview>준비 중이에요!</RestaurantReview>
       )}
     </InnerContentCard>
   );
