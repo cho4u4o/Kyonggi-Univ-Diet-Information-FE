@@ -1,13 +1,29 @@
 import styled from '@emotion/styled';
 import { MdOutlineMenuBook } from 'react-icons/md';
-import { reviews, useSelectedDormMenuStore } from '../../shared';
+import {
+  reviews,
+  useSelectedDormMenuStore,
+  requests,
+  fetchData,
+  Loading,
+} from '../../shared';
 import ReviewItem from './ReviewItem';
 import { ReviewInput } from '.';
+import { useEffect, useState } from 'react';
 
 export default function ReviewScrollView() {
-  const { selectedMenu } = useSelectedDormMenuStore();
-  const menuReviews = reviews.DormMenuReviews;
-  const selectedReview = menuReviews.find((item) => item.id === selectedMenu);
+  const { selectedMenu, selectedMenuId } = useSelectedDormMenuStore();
+  const [selectedReview, setSelectedReview] = useState(null);
+
+  useEffect(() => {
+    if (selectedMenuId) {
+      fetchData(requests.fetchMenuReview + selectedMenuId).then((response) => {
+        setSelectedReview(response);
+      });
+    }
+  }, [selectedMenu]);
+
+  console.log(selectedReview);
 
   const renderReviewContent = () => {
     if (!selectedMenu)
@@ -18,25 +34,29 @@ export default function ReviewScrollView() {
         </Unselected>
       );
 
-    if (!menuReviews) {
-      return <div></div>;
-    }
-
     return (
       <>
         <ReviewTitle>
           <b>{selectedMenu}</b>, 어떨까?
         </ReviewTitle>
         <ReviewInput />
-        {!selectedReview ? (
+        {selectedReview === undefined ? (
+          <ReviewContainer style={{ display: 'grid', placeItems: 'center' }}>
+            리뷰를 불러오는 데 실패했습니다.
+          </ReviewContainer>
+        ) : !selectedReview ? (
+          <ReviewContainer style={{ display: 'grid', placeItems: 'center' }}>
+            <img src={Loading} alt="로딩 중" />
+          </ReviewContainer>
+        ) : selectedReview.length === 0 ? (
           <ReviewContainer style={{ display: 'grid', placeItems: 'center' }}>
             리뷰가 없습니다. 첫 리뷰를 남겨주세요!
           </ReviewContainer>
         ) : (
           <ReviewContainer>
-            {selectedReview.reviews.map((review, index) => {
-              return <ReviewItem key={index} review={review} />;
-            })}
+            {selectedReview.reviews.map((review, index) => (
+              <ReviewItem key={index} review={review} />
+            ))}
           </ReviewContainer>
         )}
       </>
