@@ -7,7 +7,7 @@ export const setDormMenuData = (response) => {
     for (const time in meals) {
       const meal = meals[time];
       const menus = meal.contents.map((food) => ({
-        id: food.id,
+        id: food.dietFoodDTO.id,
         menu: food.dietFoodDTO.name,
       }));
 

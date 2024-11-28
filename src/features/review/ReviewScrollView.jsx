@@ -4,8 +4,8 @@ import {
   reviews,
   useSelectedDormMenuStore,
   requests,
-  fetchData,
   Loading,
+  axios,
 } from '../../shared';
 import ReviewItem from './ReviewItem';
 import { ReviewInput } from '.';
@@ -17,13 +17,22 @@ export default function ReviewScrollView() {
 
   useEffect(() => {
     if (selectedMenuId) {
-      fetchData(requests.fetchMenuReview + selectedMenuId).then((response) => {
-        setSelectedReview(response);
-      });
+      axios
+        .get(requests.fetchMenuReview + selectedMenuId)
+        .then((response) => {
+          if (response && response.status === 200) {
+            setSelectedReview(response.data);
+          } else {
+            setSelectedReview([]);
+          }
+        })
+        .catch((error) => {
+          console.error('Fetch error:', error);
+          setSelectedReview([]);
+        });
+      return setSelectedReview(null);
     }
-  }, [selectedMenu]);
-
-  console.log(selectedReview);
+  }, [selectedMenuId, selectedMenu]);
 
   const renderReviewContent = () => {
     if (!selectedMenu)
@@ -54,7 +63,7 @@ export default function ReviewScrollView() {
           </ReviewContainer>
         ) : (
           <ReviewContainer>
-            {selectedReview.reviews.map((review, index) => (
+            {selectedReview.map((review, index) => (
               <ReviewItem key={index} review={review} />
             ))}
           </ReviewContainer>

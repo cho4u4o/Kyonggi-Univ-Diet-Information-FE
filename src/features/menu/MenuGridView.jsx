@@ -8,7 +8,7 @@ export default function MenuGridView({ id }) {
     <MenuContainer>
       {menuData[id] ? (
         <MenuGrid>
-          {menuData[id]['쌀국수'].map((menu, index) => (
+          {menuData[id].map((menu, index) => (
             <MenuItem key={index} menu={menu} />
           ))}
         </MenuGrid>
