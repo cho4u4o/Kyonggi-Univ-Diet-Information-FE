@@ -8,7 +8,9 @@ export default function ReviewItem({ review }) {
       <ReviewInfo>
         <span>
           {review.memberName}{' '}
-          <span style={{ fontSize: '12px', fontWeight: 500 }}>2024-11-08</span>
+          <span style={{ fontSize: '12px', fontWeight: 500 }}>
+            {review.createdAt}
+          </span>
         </span>
         <span>
           <span>
