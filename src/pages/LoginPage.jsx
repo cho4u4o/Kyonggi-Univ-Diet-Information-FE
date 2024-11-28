@@ -7,7 +7,8 @@ export default function LoginPage() {
     <LoginContainer>
       <LoginWrapper>
         <Description>
-          카카오 로그인 후 <br />더 많은 기능을 이용해보세요!
+          카카오 로그인 후 <br />
+          리뷰 기능을 이용해보세요!
         </Description>
         <KakaoLoginButton
           onClick={() => {
