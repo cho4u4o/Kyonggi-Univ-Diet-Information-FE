@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import StarRatingSelector from './ReviewStarRatingSelector';
 import { axios, getCookie, requests } from '../../shared';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function ReviewInput({ menuId }) {
   const [value, setValue] = useState('');
@@ -19,6 +19,10 @@ export default function ReviewInput({ menuId }) {
     );
   };
 
+  useEffect(() => {
+    setValue('');
+  }, []);
+
   return (
     <>
       {token ? (
@@ -27,7 +31,12 @@ export default function ReviewInput({ menuId }) {
             <Textarea value={value} onChange={setValue(value)} />
             <Button
               onClick={() => {
-                postComment(value);
+                if (value.length > 0) {
+                  postComment(value);
+                  setValue('');
+                } else {
+                  alert('내용을 입력하세요!');
+                }
               }}
             >
               완료
