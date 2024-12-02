@@ -28,7 +28,10 @@ export default function ReviewInput({ menuId }) {
       {token ? (
         <ReviewInputWrapper>
           <InputContainer>
-            <Textarea value={value} onChange={setValue(value)} />
+            <Textarea
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
             <Button
               onClick={() => {
                 if (value.length > 0) {
