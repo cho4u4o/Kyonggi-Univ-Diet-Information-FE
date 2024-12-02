@@ -15,7 +15,7 @@ export default function ReviewInput({ menuId }) {
         title: '',
         content: comment,
       },
-      { headers: { Authorization: getCookie(token) } },
+      { headers: { Authorization: `Bearer ${getCookie(token)}` } },
     );
     console.log(requests.postMenuReview + menuId);
     console.log(getCookie('token'));
