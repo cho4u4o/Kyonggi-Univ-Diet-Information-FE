@@ -18,7 +18,7 @@ export default function ReviewInput({ menuId }) {
       { headers: { Authorization: `Bearer ${getCookie(token)}` } },
     );
     console.log(requests.postMenuReview + menuId);
-    console.log(getCookie('token'));
+    console.log(`Bearer ${getCookie('token')}`);
   };
 
   useEffect(() => {
