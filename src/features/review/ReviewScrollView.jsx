@@ -48,7 +48,7 @@ export default function ReviewScrollView() {
         <ReviewTitle>
           <b>{selectedMenu}</b>, 어떨까?
         </ReviewTitle>
-        <ReviewInput />
+        <ReviewInput menuId={selectedMenuId} />
         {selectedReview === undefined ? (
           <ReviewContainer style={{ display: 'grid', placeItems: 'center' }}>
             리뷰를 불러오는 데 실패했습니다.
