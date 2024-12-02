@@ -17,6 +17,8 @@ export default function ReviewInput({ menuId }) {
       },
       { headers: { Authorization: getCookie(token) } },
     );
+    console.log(requests.postComment + menuId);
+    console.log(getCookie('token'));
   };
 
   useEffect(() => {
@@ -30,7 +32,10 @@ export default function ReviewInput({ menuId }) {
           <InputContainer>
             <Textarea
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => {
+                setValue(e.target.value);
+                console.log(value);
+              }}
             />
             <Button
               onClick={() => {
