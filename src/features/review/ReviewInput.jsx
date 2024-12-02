@@ -1,17 +1,37 @@
 import styled from '@emotion/styled';
 import StarRatingSelector from './ReviewStarRatingSelector';
-import { getCookie } from '../../shared';
+import { axios, getCookie, requests } from '../../shared';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-export default function ReviewInput() {
+export default function ReviewInput({ menuId }) {
+  const [value, setValue] = useState('');
   const token = getCookie('token');
+  const postComment = (comment) => {
+    axios.post(
+      requests.postComment + menuId,
+      {
+        rating: 5,
+        title: '',
+        content: comment,
+      },
+      { headers: { Authorization: getCookie(token) } },
+    );
+  };
+
   return (
     <>
       {token ? (
         <ReviewInputWrapper>
           <InputContainer>
-            <Textarea />
-            <Button>완료</Button>
+            <Textarea value={value} onChange={setValue(value)} />
+            <Button
+              onClick={() => {
+                postComment(value);
+              }}
+            >
+              완료
+            </Button>
           </InputContainer>
         </ReviewInputWrapper>
       ) : (
