@@ -43,8 +43,8 @@ export default function ReviewInput({ menuId }) {
             <Button
               onClick={() => {
                 if (value.length > 0) {
-                  setNewReview(value);
                   postComment(value);
+                  setNewReview(value);
                   setValue('');
                 } else {
                   alert('내용을 입력하세요!');
