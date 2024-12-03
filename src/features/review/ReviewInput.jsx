@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 import StarRatingSelector from './ReviewStarRatingSelector';
-import { axios, getCookie, requests } from '../../shared';
+import {
+  axios,
+  getCookie,
+  requests,
+  useSelectedDormMenuStore,
+} from '../../shared';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 

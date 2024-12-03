@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { MdOutlineMenuBook } from 'react-icons/md';
 import {
-  reviews,
   useSelectedDormMenuStore,
   requests,
   Loading,
