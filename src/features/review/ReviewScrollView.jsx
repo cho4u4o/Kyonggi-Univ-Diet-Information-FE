@@ -85,7 +85,7 @@ export default function ReviewScrollView() {
           </ReviewContainer>
         ) : (
           <ReviewContainer>
-            {selectedReview.map((review, index) => (
+            {[...selectedReview].reverse().map((review, index) => (
               <ReviewItem key={index} review={review} />
             ))}
           </ReviewContainer>
