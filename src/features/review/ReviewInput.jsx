@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function ReviewInput({ menuId }) {
+  const { setNewReview } = useSelectedDormMenuStore();
   const [value, setValue] = useState('');
   const token = getCookie('token');
   const postComment = (comment) => {
@@ -32,12 +33,12 @@ export default function ReviewInput({ menuId }) {
               value={value}
               onChange={(e) => {
                 setValue(e.target.value);
-                console.log(value);
               }}
             />
             <Button
               onClick={() => {
                 if (value.length > 0) {
+                  setNewReview(comment);
                   postComment(value);
                   setValue('');
                 } else {

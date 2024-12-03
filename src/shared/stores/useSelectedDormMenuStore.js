@@ -11,4 +11,6 @@ export const useSelectedDormMenuStore = create((set) => ({
   setWeeklyMenu: (menu) => set(() => ({ weeklyMenu: menu })),
   todayMenu: null,
   setTodayMenu: (menu) => set(() => ({ todayMenu: menu })),
+  newReview: null,
+  setNewReview: (review) => set(() => ({ newReview: review })),
 }));

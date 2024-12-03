@@ -12,7 +12,8 @@ import { ReviewInput } from '.';
 import { useEffect, useState } from 'react';
 
 export default function ReviewScrollView() {
-  const { selectedMenu, selectedMenuId } = useSelectedDormMenuStore();
+  const { selectedMenu, selectedMenuId, newReview } =
+    useSelectedDormMenuStore();
   const [selectedReview, setSelectedReview] = useState(null);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function ReviewScrollView() {
         });
       return setSelectedReview(null);
     }
-  }, [selectedMenuId, selectedMenu]);
+  }, [selectedMenuId, selectedMenu, newReview]);
 
   const renderReviewContent = () => {
     if (!selectedMenu)
