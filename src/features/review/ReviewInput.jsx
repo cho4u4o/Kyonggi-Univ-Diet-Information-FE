@@ -14,15 +14,18 @@ export default function ReviewInput({ menuId }) {
   const [value, setValue] = useState('');
   const token = getCookie('token');
   const postComment = (comment) => {
-    axios.post(
-      requests.postMenuReview + menuId,
-      {
-        rating: 5,
-        title: '',
-        content: comment,
-      },
-      { headers: { Authorization: `Bearer ${getCookie('token')}` } },
-    );
+    axios
+      .post(
+        requests.postMenuReview + menuId,
+        {
+          rating: 5,
+          title: '',
+          content: comment,
+        },
+        { headers: { Authorization: `Bearer ${getCookie('token')}` } },
+      )
+      .then(setNewReview(comment))
+      .catch((error) => console.error(error));
   };
 
   useEffect(() => {
@@ -44,7 +47,6 @@ export default function ReviewInput({ menuId }) {
               onClick={() => {
                 if (value.length > 0) {
                   postComment(value);
-                  setNewReview(value);
                   setValue('');
                 } else {
                   alert('내용을 입력하세요!');
@@ -81,7 +83,6 @@ export default function ReviewInput({ menuId }) {
                 <LoginLink to="/login">로그인</LoginLink>
               </div>
             </div>
-
             <Textarea />
             <Button>완료</Button>
           </InputContainer>
