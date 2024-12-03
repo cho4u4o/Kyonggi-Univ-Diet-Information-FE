@@ -43,7 +43,7 @@ export default function ReviewInput({ menuId }) {
             <Button
               onClick={() => {
                 if (value.length > 0) {
-                  setNewReview(comment);
+                  setNewReview(value);
                   postComment(value);
                   setValue('');
                 } else {
