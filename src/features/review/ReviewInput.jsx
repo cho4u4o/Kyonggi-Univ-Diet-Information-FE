@@ -9,7 +9,7 @@ export default function ReviewInput({ menuId }) {
   const token = getCookie('token');
   const postComment = (comment) => {
     axios.post(
-      requests.postComment + menuId,
+      requests.postMenuReview + menuId,
       {
         rating: 5,
         title: '',
