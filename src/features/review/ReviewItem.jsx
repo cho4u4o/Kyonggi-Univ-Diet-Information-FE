@@ -19,6 +19,7 @@ export default function ReviewItem({ review }) {
     if (!fav) {
       await axios.post(
         requests.toggleReviewFav + review.id + '/create-favorite',
+        null,
         { headers: { Authorization: `Bearer ${getCookie('token')}` } },
       );
       setFav(true);
