@@ -35,11 +35,18 @@ export default function ReviewItem({ review }) {
     fetchFavCnt();
   }, [favCount]);
 
+  function maskName(name) {
+    if (name.length <= 1) {
+      return name;
+    }
+    return name[0] + '*'.repeat(name.length - 1);
+  }
+
   return (
     <Review>
       <ReviewInfo>
         <span>
-          {review.memberName}{' '}
+          {maskName(review.memberName)}{' '}
           <span style={{ fontSize: '12px', fontWeight: 500 }}>
             {review.createdAt}
           </span>
