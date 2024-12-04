@@ -33,7 +33,11 @@ export default function ReviewItem({ review }) {
 
   useEffect(() => {
     fetchFavCnt();
-  }, [favCount]);
+  }, []);
+
+  useEffect(() => {
+    fetchFavCnt();
+  }, [fav]);
 
   function maskName(name) {
     if (name.length <= 1) {

@@ -13,9 +13,9 @@ export default function ReviewInput({ menuId }) {
   const { setNewReview } = useSelectedDormMenuStore();
   const [value, setValue] = useState('');
   const token = getCookie('token');
-  const postComment = (comment) => {
-    axios
-      .post(
+  async function postComment(comment) {
+    try {
+      await axios.post(
         requests.postMenuReview + menuId,
         {
           rating: 5,
@@ -23,10 +23,11 @@ export default function ReviewInput({ menuId }) {
           content: comment,
         },
         { headers: { Authorization: `Bearer ${getCookie('token')}` } },
-      )
-      .then(setNewReview(comment))
-      .catch((error) => console.error(error));
-  };
+      );
+      setValue('');
+      setNewReview(comment);
+    } catch (error) {}
+  }
 
   useEffect(() => {
     setValue('');
@@ -47,7 +48,6 @@ export default function ReviewInput({ menuId }) {
               onClick={() => {
                 if (value.length > 0) {
                   postComment(value);
-                  setValue('');
                 } else {
                   alert('내용을 입력하세요!');
                 }
