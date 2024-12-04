@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { MdOutlineThumbUp, IoMdThumbsUp } from 'react-icons/md';
+import { MdOutlineThumbUp } from 'react-icons/md';
+import { IoMdThumbsUp } from 'react-icons/io';
 import { axios, getCookie, requests } from '../../shared';
 import { useState, useEffect } from 'react';
 
