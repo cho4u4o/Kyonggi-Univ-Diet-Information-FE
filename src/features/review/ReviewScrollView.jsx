@@ -15,44 +15,28 @@ export default function ReviewScrollView() {
     useSelectedDormMenuStore();
   const [selectedReview, setSelectedReview] = useState(null);
 
+  async function fetchReview() {
+    try {
+      const response = await axios.get(
+        requests.fetchMenuReview + selectedMenuId,
+      );
+      if (response && response.status === 200) {
+        setSelectedReview(response.data);
+      }
+    } catch (error) {
+      setSelectedReview([]);
+    }
+  }
+
   useEffect(() => {
     if (selectedMenuId) {
-      axios
-        .get(requests.fetchMenuReview + selectedMenuId)
-        .then((response) => {
-          if (response && response.status === 200) {
-            setSelectedReview(response.data);
-          } else {
-            setSelectedReview([]);
-          }
-        })
-        .catch((error) => {
-          console.error('Fetch error:', error);
-          setSelectedReview([]);
-        });
-      return setSelectedReview(null);
+      fetchReview();
     }
   }, [selectedMenuId, selectedMenu]);
 
   useEffect(() => {
     if (newReview) {
-      const timeout = setTimeout(() => {
-        axios
-          .get(requests.fetchMenuReview + selectedMenuId)
-          .then((response) => {
-            if (response && response.status === 200) {
-              setSelectedReview(response.data);
-            } else {
-              setSelectedReview([]);
-            }
-          })
-          .catch((error) => {
-            console.error('Fetch error:', error);
-            setSelectedReview([]);
-          });
-      }, 1500);
-
-      return () => clearTimeout(timeout);
+      fetchReview();
     }
   }, [newReview]);
 

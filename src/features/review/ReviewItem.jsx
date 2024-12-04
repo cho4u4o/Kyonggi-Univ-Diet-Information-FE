@@ -1,8 +1,36 @@
 import styled from '@emotion/styled';
 import { FaStar } from 'react-icons/fa';
 import { MdOutlineThumbUp } from 'react-icons/md';
+import { axios, requests } from '../../shared';
+import { useState, useEffect } from 'react';
 
 export default function ReviewItem({ review }) {
+  const [favCount, setFavCount] = useState(0);
+  const [fav, setFav] = useState(false);
+
+  async function fetchFavCnt() {
+    const cnt = await axios.get(requests.fetchReviewFav + review.id);
+    if (cnt > 0) {
+      setFavCount(cnt.data.result);
+    }
+  }
+
+  async function toggleFavorite() {
+    if (!fav) {
+      await axios.post(
+        requests.toggleReviewFav + review.id + '/create-favorite',
+      );
+      setFav(true);
+    } else {
+      axios.delete(requests.toggleReviewFav + 'delete/' + review.id);
+      setFav(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchFavCnt();
+  }, [favCount]);
+
   return (
     <Review>
       <ReviewInfo>
@@ -13,14 +41,13 @@ export default function ReviewItem({ review }) {
           </span>
         </span>
         <span>
-          <span>
-            {Array.from({ length: review.rating }).map((_, index) => (
-              <FaStar size={12} key={index} />
-            ))}
+          <span
+            style={{ fontSize: '12px', fontWeight: 500, paddingBottom: '5px' }}
+          >
+            {favCount}
           </span>
-          <LikeBtn>
-            <MdOutlineThumbUp />
-            {/* <IoMdThumbsUp /> */}
+          <LikeBtn onClick={() => toggleFavorite()}>
+            {fav ? <IoMdThumbsUp size={15} /> : <MdOutlineThumbUp size={15} />}
           </LikeBtn>
         </span>
       </ReviewInfo>
