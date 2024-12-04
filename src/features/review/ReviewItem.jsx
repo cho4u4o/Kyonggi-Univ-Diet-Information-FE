@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { FaStar } from 'react-icons/fa';
-import { MdOutlineThumbUp } from 'react-icons/md';
+import { MdOutlineThumbUp, IoMdThumbsUp } from 'react-icons/md';
 import { axios, getCookie, requests } from '../../shared';
 import { useState, useEffect } from 'react';
 
