@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FaStar } from 'react-icons/fa';
 import { MdOutlineThumbUp } from 'react-icons/md';
-import { axios, requests } from '../../shared';
+import { axios, getCookie, requests } from '../../shared';
 import { useState, useEffect } from 'react';
 
 export default function ReviewItem({ review }) {
@@ -19,10 +19,13 @@ export default function ReviewItem({ review }) {
     if (!fav) {
       await axios.post(
         requests.toggleReviewFav + review.id + '/create-favorite',
+        { headers: { Authorization: `Bearer ${getCookie('token')}` } },
       );
       setFav(true);
     } else {
-      axios.delete(requests.toggleReviewFav + 'delete/' + review.id);
+      axios.delete(requests.toggleReviewFav + 'delete/' + review.id, {
+        headers: { Authorization: `Bearer ${getCookie('token')}` },
+      });
       setFav(false);
     }
   }
