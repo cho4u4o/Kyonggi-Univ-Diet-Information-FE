@@ -36,7 +36,7 @@ export default function ReviewItem({ review }) {
       );
       await Promise.all([fetchIsFaved(), fetchFavCnt()]);
     } else {
-      axios.delete(requests.toggleReviewFav + 'delete/' + review.id, {
+      await axios.delete(requests.toggleReviewFav + 'delete/' + review.id, {
         headers: { Authorization: `Bearer ${getCookie('token')}` },
       });
       await Promise.all([fetchIsFaved(), fetchFavCnt()]);
