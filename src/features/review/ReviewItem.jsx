@@ -41,6 +41,7 @@ export default function ReviewItem({ review }) {
   }
 
   useEffect(() => {
+    fetchIsFaved();
     fetchFavCnt();
   }, []);
 
