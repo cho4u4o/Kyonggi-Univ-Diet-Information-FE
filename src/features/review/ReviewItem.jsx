@@ -25,10 +25,11 @@ export default function ReviewItem({ review }) {
       console.log(favList.includes(review.id));
       if (favList.includes(review.id)) {
         setFav(true);
+        console.log(fav);
       } else {
         setFav(false);
+        console.log(fav);
       }
-      console.log(fav);
     } catch (error) {}
   }
 
