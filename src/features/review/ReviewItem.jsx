@@ -21,6 +21,7 @@ export default function ReviewItem({ review }) {
         headers: { Authorization: `Bearer ${getCookie('token')}` },
       });
       const favList = response.data.map((item) => item.id);
+      console.log(favList);
       if (favList.includes(review.id)) {
         setFav(true);
       } else {
