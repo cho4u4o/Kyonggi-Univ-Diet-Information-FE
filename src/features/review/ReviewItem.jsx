@@ -11,7 +11,7 @@ export default function ReviewItem({ review }) {
   async function fetchFavCnt() {
     const cnt = await axios.get(requests.fetchReviewFav + review.id);
     if (cnt > 0) {
-      setFavCount(cnt.data.result);
+      setFavCount(cnt);
     }
   }
 
@@ -23,6 +23,8 @@ export default function ReviewItem({ review }) {
       const favList = response.data.map((item) => item.id);
       if (favList.includes(review.id)) {
         setFav(true);
+      } else {
+        setFav(false);
       }
     } catch (error) {}
   }
@@ -49,6 +51,7 @@ export default function ReviewItem({ review }) {
   }, []);
 
   useEffect(() => {
+    fetchIsFaved();
     fetchFavCnt();
   }, [fav]);
 
