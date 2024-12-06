@@ -38,12 +38,14 @@ export default function ReviewItem({ review }) {
         null,
         { headers: { Authorization: `Bearer ${getCookie('token')}` } },
       );
-      setFav(true);
+      fetchIsFaved();
+      fetchFavCnt();
     } else {
       axios.delete(requests.toggleReviewFav + 'delete/' + review.id, {
         headers: { Authorization: `Bearer ${getCookie('token')}` },
       });
-      setFav(false);
+      fetchIsFaved();
+      fetchFavCnt();
     }
   }
 
@@ -51,11 +53,6 @@ export default function ReviewItem({ review }) {
     fetchIsFaved();
     fetchFavCnt();
   }, []);
-
-  useEffect(() => {
-    fetchIsFaved();
-    fetchFavCnt();
-  }, [fav]);
 
   function maskName(name) {
     if (name.length <= 1) {
