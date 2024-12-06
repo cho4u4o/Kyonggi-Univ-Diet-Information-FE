@@ -22,6 +22,8 @@ export default function ReviewItem({ review }) {
       });
       const favList = response.data.map((item) => item.id);
       console.log(favList);
+      console.log(review.id);
+      console.log(favList.includes(review.id));
       if (favList.includes(review.id)) {
         setFav(true);
       } else {
