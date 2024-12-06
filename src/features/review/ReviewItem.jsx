@@ -17,10 +17,13 @@ export default function ReviewItem({ review }) {
 
   async function fetchIsFaved() {
     try {
-      const isFaved = await axios.get(requests.fetchMemberFav, {
+      const response = await axios.get(requests.fetchMemberFav, {
         headers: { Authorization: `Bearer ${getCookie('token')}` },
       });
-      console.log(isFaved);
+      const favList = response.data.map((item) => item.id);
+      if (favList.includes(review.id)) {
+        setFav(true);
+      }
     } catch (error) {}
   }
 
