@@ -23,13 +23,7 @@ export default function ReviewItem({ review }) {
       console.log(favList);
       console.log(review.id);
       console.log(favList.includes(review.id));
-      if (favList.includes(review.id)) {
-        setFav(true);
-        console.log(fav);
-      } else {
-        setFav(false);
-        console.log(fav);
-      }
+      setFav(favList.includes(review.id));
     } catch (error) {}
   }
 
@@ -40,14 +34,12 @@ export default function ReviewItem({ review }) {
         null,
         { headers: { Authorization: `Bearer ${getCookie('token')}` } },
       );
-      fetchIsFaved();
-      fetchFavCnt();
+      await Promise.all([fetchIsFaved(), fetchFavCnt()]);
     } else {
       axios.delete(requests.toggleReviewFav + 'delete/' + review.id, {
         headers: { Authorization: `Bearer ${getCookie('token')}` },
       });
-      fetchIsFaved();
-      fetchFavCnt();
+      await Promise.all([fetchIsFaved(), fetchFavCnt()]);
     }
   }
 
