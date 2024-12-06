@@ -10,7 +10,7 @@ export default function ReviewItem({ review }) {
 
   async function fetchFavCnt() {
     const cnt = await axios.get(requests.fetchReviewFav + review.id);
-    console.log(cnt);
+    setFavCount(cnt.data);
   }
 
   async function fetchIsFaved() {
