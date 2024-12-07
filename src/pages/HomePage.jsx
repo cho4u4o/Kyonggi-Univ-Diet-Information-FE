@@ -30,7 +30,11 @@ export default function Home() {
           <ReviewScrollView />
         </InnerContentCard>
       </InnerContentWrapper>
-      <FloatingCircle>
+      <FloatingCircle
+        onClick={() =>
+          (window.location.href = 'https://open.kakao.com/o/sgcUtX3g')
+        }
+      >
         <Logo src={NoticeImg} />
       </FloatingCircle>
     </Content>
@@ -72,6 +76,11 @@ const FloatingCircle = styled.div`
   justify-content: center;
   cursor: pointer;
   box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 0.09);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 
   @media (max-width: 480px) {
     display: none;
