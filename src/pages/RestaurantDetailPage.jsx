@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { MenuGridView, ReviewScrollView } from '../features';
+import { MenuGridView } from '../features';
 import { InnerContentCard } from '../widgets';
 import { useSelectedRestaurantStore } from '../shared';
 
@@ -17,7 +17,7 @@ export default function RestaurantDetailPage({ restaurant }) {
   ];
 
   return (
-    <InnerContentCard theme="black" flexDirection="column">
+    <InnerRestaurantContentCard theme="black" flexDirection="column">
       <MenuReviewToggleWrapper>
         <MenuReviewToggleButton>
           {[0, 1].map((id) => (
@@ -36,9 +36,13 @@ export default function RestaurantDetailPage({ restaurant }) {
       ) : (
         <RestaurantReview>준비 중이에요!</RestaurantReview>
       )}
-    </InnerContentCard>
+    </InnerRestaurantContentCard>
   );
 }
+
+const InnerRestaurantContentCard = styled(InnerContentCard)`
+  height: 70vh;
+`;
 
 const RestaurantReview = styled.div`
   display: grid;
@@ -53,7 +57,7 @@ const MenuReviewToggleButton = styled.div`
   width: 86px;
   height: 30px;
   background-color: #333;
-  margin-left: 10px;
+  margin-left: 0px;
   border-radius: 4px;
   align-items: center;
   justify-content: space-between;
@@ -66,12 +70,10 @@ const MenuReviewToggleWrapper = styled.div`
   display: flex;
   height: 30px;
   width: 100%;
-  margin-bottom: 10px;
-
-  @media (max-width: 480px) {
-    margin-bottom: 0px;
-  }
+  margin-bottom: 0px;
+  padding: 5px;
 `;
+
 const MenuReviewToggleContent = styled.button`
   width: 40px;
   height: 26px;

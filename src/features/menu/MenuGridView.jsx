@@ -32,9 +32,13 @@ const MenuContainer = styled.div`
 
 const MenuGrid = styled.main`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
   width: 100%;
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const NoMenu = styled.div`

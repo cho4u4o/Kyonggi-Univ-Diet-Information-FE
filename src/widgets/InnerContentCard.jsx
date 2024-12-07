@@ -20,7 +20,6 @@ export const InnerContentCard = styled.div`
     border-radius: 15px;
     border: none;
     width: 85vw;
-    height: 400px;
     padding: ${({ theme }) => (theme === 'black' ? '10px' : '20px')};
   }
   @media (max-width: 390px) {

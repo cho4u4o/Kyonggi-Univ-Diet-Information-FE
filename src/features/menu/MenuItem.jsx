@@ -13,7 +13,8 @@ export default function MenuItem({ menu }) {
 const MenuItemWrapper = styled.div`
   background-color: transparent;
   border-radius: 15px;
-  padding: 10px;
+  padding: 5px;
+  margin-bottom: 30px;
   transition:
     transform 0.3s,
     border 0.2s ease-in-out;
@@ -22,6 +23,9 @@ const MenuItemWrapper = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
 `;
 
 const MenuImage = styled.div`
@@ -36,4 +40,8 @@ const MenuTitle = styled.p`
   font: 600 18px/1.5 Pretendard;
   margin: 0;
   color: white;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
