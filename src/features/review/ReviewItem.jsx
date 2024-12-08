@@ -44,7 +44,9 @@ export default function ReviewItem({ review }) {
   }
 
   useEffect(() => {
-    fetchIsFaved();
+    if (getCookie('token')) {
+      fetchIsFaved();
+    }
     fetchFavCnt();
   }, []);
 
