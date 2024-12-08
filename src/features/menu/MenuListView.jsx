@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import {
   requests,
   fetchData,
-  getTodayDate,
   setDormMenuData,
   useSelectedDormMenuStore,
 } from '../../shared';
@@ -16,23 +15,25 @@ export default function MenuListView() {
     setTodayMenu,
     setWeeklyMenu,
     selectedMenu,
+    selectedDate,
     setSelectedMenu,
     setSelectedMenuId,
+    useTodayDate,
   } = useSelectedDormMenuStore();
 
   useEffect(() => {
     fetchData(requests.fetchDormMenu).then((response) => {
       const data = setDormMenuData(response);
       setWeeklyMenu(data);
-      setTodayMenu(data[getTodayDate('weekday')]);
+      setTodayMenu(data[useTodayDate('weekday', selectedDate)]);
     });
-  }, []);
+  }, [selectedDate]);
 
   const labels = ['BREAKFAST', 'LUNCH', 'DINNER'];
   const runningTimes = ['', '11:00 ~ 13:30', '17:00 ~ 19:00'];
 
   const renderContent = () => {
-    const weekday = getTodayDate('weekday');
+    const weekday = useTodayDate('weekday', selectedDate);
 
     if (['SATURDAY', 'SUNDAY'].includes(weekday)) {
       return <Text color="#000">주말에는 운영하지 않습니다.</Text>;

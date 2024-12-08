@@ -5,7 +5,7 @@ import {
   InnerTitlesWrapper,
   Selector,
 } from '../widgets';
-import { NoticeImg, RiceImg, getTodayDate } from '../shared';
+import { NoticeImg, RiceImg, useSelectedDormMenuStore } from '../shared';
 import {
   MenuListView,
   MenuTimeSelectorButton,
@@ -13,12 +13,13 @@ import {
 } from '../features';
 
 export default function Home() {
+  const { selectedDate, useTodayDate } = useSelectedDormMenuStore();
   return (
     <Content>
       <InnerTitlesWrapper
         logo={RiceImg}
         title="오늘의 드림타워 식단"
-        subtitle={getTodayDate('all')}
+        subtitle={useTodayDate('all', selectedDate)}
         theme="black"
       />
       <InnerContentWrapper>

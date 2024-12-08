@@ -1,14 +1,37 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { useSelectedDormMenuStore } from '../shared';
 
 export default function InnerTitlesWrapper({ logo, title, subtitle, theme }) {
+  const {
+    setSelectedDateAfter,
+    setSelectedDateBefore,
+    useTodayDate,
+    selectedDate,
+  } = useSelectedDormMenuStore();
+
   return (
     <ContentHeader>
       <TitleContainer>
         <Logo src={logo} />
         <TitleWrapper theme={theme}>
           <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
+          <Subtitle>
+            <DateButton
+              disabled={useTodayDate('weekday', selectedDate) === 'MONDAY'}
+              onClick={() => setSelectedDateBefore()}
+            >
+              <IoIosArrowBack size={14} />
+            </DateButton>
+            {subtitle}
+            <DateButton
+              onClick={() => setSelectedDateAfter()}
+              disabled={useTodayDate('weekday', selectedDate) === 'SUNDAY'}
+            >
+              <IoIosArrowForward size={14} />
+            </DateButton>
+          </Subtitle>
         </TitleWrapper>
       </TitleContainer>
     </ContentHeader>
@@ -21,6 +44,16 @@ const TitleContainer = styled.div`
   @media (max-width: 480px) {
     width: fit-content;
   }
+`;
+
+const DateButton = styled.button`
+  width: fit-content;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
 `;
 
 const ContentHeader = styled.div`
@@ -70,8 +103,11 @@ const Title = styled.p`
   }
 `;
 
-const Subtitle = styled.p`
+const Subtitle = styled.div`
+  justify-content: center;
+  align-items: center;
   font-family: Pretendard;
+  display: flex;
   font-size: 20px;
   font-weight: 600;
   margin-top: 4px;
