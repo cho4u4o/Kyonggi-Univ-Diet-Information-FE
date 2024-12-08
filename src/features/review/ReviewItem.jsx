@@ -66,16 +66,33 @@ export default function ReviewItem({ review }) {
             {review.createdAt}
           </span>
         </span>
-        <span>
-          <span
-            style={{ fontSize: '12px', fontWeight: 500, paddingBottom: '5px' }}
-          >
-            {favCount}
-          </span>
-          <LikeBtn onClick={() => toggleFavorite()}>
-            {fav ? <IoMdThumbsUp size={15} /> : <MdOutlineThumbUp size={15} />}
-          </LikeBtn>
-        </span>
+        <div
+          style={{
+            display: 'grid',
+            placeItems: 'center',
+          }}
+        >
+          <div style={{ display: 'flex' }}>
+            <div
+              style={{
+                fontSize: '12px',
+                fontWeight: 500,
+              }}
+            >
+              {favCount}
+            </div>
+            <LikeBtn
+              onClick={() => toggleFavorite()}
+              disabled={!getCookie('token')}
+            >
+              {fav ? (
+                <IoMdThumbsUp size={16} />
+              ) : (
+                <MdOutlineThumbUp size={16} />
+              )}
+            </LikeBtn>
+          </div>
+        </div>
       </ReviewInfo>
       {review.content}
     </Review>
@@ -103,11 +120,12 @@ const ReviewInfo = styled.div`
   color: #000;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const LikeBtn = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  margin-left: 4px;
+  margin-left: 2px;
 `;
