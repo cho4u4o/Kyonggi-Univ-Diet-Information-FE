@@ -19,6 +19,7 @@ export default function InnerTitlesWrapper({ logo, title, subtitle, theme }) {
           <Title>{title}</Title>
           <Subtitle>
             <DateButton
+              theme={theme}
               disabled={useTodayDate('weekday', selectedDate) === 'MONDAY'}
               onClick={() => setSelectedDateBefore()}
             >
@@ -26,6 +27,7 @@ export default function InnerTitlesWrapper({ logo, title, subtitle, theme }) {
             </DateButton>
             {subtitle}
             <DateButton
+              theme={theme}
               onClick={() => setSelectedDateAfter()}
               disabled={useTodayDate('weekday', selectedDate) === 'SUNDAY'}
             >
@@ -52,8 +54,8 @@ const DateButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  display: grid;
   place-items: center;
+  display: ${({ theme }) => (theme === 'black' ? 'flex' : 'none')};
 `;
 
 const ContentHeader = styled.div`
