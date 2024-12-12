@@ -41,7 +41,9 @@ export default function RestaurantDetailPage({ restaurant }) {
 }
 
 const InnerRestaurantContentCard = styled(InnerContentCard)`
-  height: 70vh;
+  @media (max-width: 490px) {
+    height: 70vh;
+  }
 `;
 
 const RestaurantReview = styled.div`
