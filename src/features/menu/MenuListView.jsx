@@ -54,6 +54,10 @@ export default function MenuListView() {
       );
     }
 
+    if (todayMenu && !todayMenu[labels[clicked]]) {
+      return <Text color="#000">미운영</Text>;
+    }
+
     return (
       <>
         <MenuListHeader>
